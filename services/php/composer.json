@@ -23,6 +23,9 @@
         "psr-4": {
             "app\\": "app/",
             "modules\\": "modules/"
+        },
+        "psr-0": {
+            "": "extend/"
         }
     },
     "config": {
