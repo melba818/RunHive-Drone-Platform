@@ -55,7 +55,7 @@ services:
       init:
         condition: service_completed_successfully
     environment:
-      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_ROOT: /srv/runhive/backend/public
       PHP_DATE_TIMEZONE: UTC
       PHP_MEMORY_LIMIT: 512M
       SERVICE_NGINX_CLIENT_MAX_BODY_SIZE: 100M
