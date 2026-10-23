@@ -59,7 +59,7 @@ RunHive 把 Agent 助手嵌进了每一个工作台。它不只是聊天 —— 
 
 ## 🚀 快速开始
 
-**只想试试？** 到 [Releases](https://github.com/melba818/runhive/releases) 下载一键演示包：解压后执行 `docker compose up -d`，打开 <http://localhost:1819/>，用演示账号 `admin` / `runhive-demo` 登录即可。演示包内置脱敏的种子数据库，零配置启动完整门户体验。
+**只想试试？** 克隆本仓库后一条命令即可：`cd quickstart && docker compose up -d`，然后打开 <http://localhost:1819/>，用演示账号 `admin` / `runhive-demo` 登录。演示环境内置脱敏的种子数据库，零配置启动完整门户体验。详见 [quickstart/README.md](quickstart/README.md)。
 
 **从源码构建（开发环境）：**
 

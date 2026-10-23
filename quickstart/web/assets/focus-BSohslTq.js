@@ -1,0 +1,1 @@
+import{_ as s}from"./index-BnPf7g8i.js";import{j as e,o as t,l as c}from"./vue-NXx3LVgx.js";import"./mars3d-vendor-HhxCSbcJ.js";const r={},n={class:"focus-container"};function a(f,o){return t(),e("div",n,o[0]||(o[0]=[c("div",{class:"focus-title"},"对焦",-1)]))}const d=s(r,[["render",a]]);export{d as default};

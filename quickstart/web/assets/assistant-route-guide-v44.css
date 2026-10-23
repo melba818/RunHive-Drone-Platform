@@ -1,0 +1,28 @@
+[data-route-guide]{margin:12px 0;color:#17324d}
+.rh-guide,.route-resource-card{box-sizing:border-box;background:#fff;border:1px solid #c6dcf4;border-radius:12px;padding:14px;color:#17324d;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+.rh-guide{position:static;width:100%;height:auto;max-height:none;box-shadow:none}
+.rh-guide strong,.route-resource-card strong{display:block;font-weight:600;color:#245a91}
+.rh-guide p,.route-resource-card p{font-size:12px;margin:8px 0;color:#657d99}
+.rh-steps{font-size:11px;margin:6px 0 12px;color:#8398b1}
+.rh-field,.route-resource-field{display:flex;flex-direction:column;gap:5px;margin:10px 0;font-size:12px;font-weight:500}
+.rh-field input,.rh-field select,.route-resource-field input,.route-resource-field select{box-sizing:border-box;width:100%;min-width:0;height:34px;padding:5px 9px;border:1px solid #d5e1ef;border-radius:7px;background:#fff;color:#17324d;font:inherit;outline:none}
+.rh-field input:focus,.rh-field select:focus,.route-resource-field input:focus,.route-resource-field select:focus{border-color:#409eff;box-shadow:0 0 0 2px #409eff18}
+.rh-guide button,.route-resource-card button{border:1px solid #d5e1ef;border-radius:7px;padding:6px 10px;background:#f6faff;color:#245a91;cursor:pointer;font:inherit;font-size:12px;line-height:1.5;margin:3px 4px 3px 0}
+.rh-guide button.primary,.route-resource-card button.primary{background:#409eff;border-color:#409eff;color:#fff}
+.rh-guide button:disabled,.route-resource-card button:disabled{opacity:.5;cursor:default}
+.rh-guide-actions,.route-resource-actions{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.rh-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.rh-feature-list{max-height:180px;overflow-y:auto;margin:10px 0;border-radius:7px;background:#f6faff}
+.rh-feature-list label{display:flex;align-items:flex-start;padding:7px 8px;line-height:1.6;border-bottom:1px solid #e7eef7}
+.rh-guide input[type=checkbox]{flex-shrink:0;accent-color:#409eff;margin:4px 7px 0 0;width:auto;height:auto}
+.rh-guide details{margin:8px 0}.rh-guide summary{cursor:pointer;color:#3b6d9f;font-size:12px}
+.rh-guide .rh-error,.route-resource-card .error{color:#c45e10;white-space:pre-line}
+.rh-note{font-size:11px!important;color:#8398b1!important}
+.rh-checkpoint{background:#eaf4ff;border-radius:7px;padding:8px;margin:10px 0;font-size:12px}
+
+/* Keep the conversation composer compact so map guidance has more room. */
+.composer{padding:7px 12px}
+.composer textarea{height:36px;max-height:80px;line-height:20px;padding:3px 4px;overflow-y:auto}
+.composer .attachments:empty{display:none}
+.composer .input-actions{margin-top:3px}
+.composer .input-actions button{height:29px;min-height:29px;padding:3px 9px;line-height:20px}

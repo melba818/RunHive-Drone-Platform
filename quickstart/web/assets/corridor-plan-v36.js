@@ -1,0 +1,20 @@
+// WGS84 degrees in [longitude,latitude] order, distances in metres.
+export const validPoint=p=>Array.isArray(p)&&p.length>=2&&p.slice(0,2).every(Number.isFinite)&&Math.abs(p[0])<=180&&Math.abs(p[1])<=85;
+export function distance(a,b){const rad=Math.PI/180,dl=(b[0]-a[0])*rad,dp=(b[1]-a[1])*rad,h=Math.sin(dp/2)**2+Math.cos(a[1]*rad)*Math.cos(b[1]*rad)*Math.sin(dl/2)**2;return 6371008.8*2*Math.atan2(Math.sqrt(h),Math.sqrt(Math.max(0,1-h)))}
+export function length(line){return line.slice(1).reduce((n,p,i)=>n+distance(line[i],p),0)}
+function between(a,b,t){if(t<=1e-12)return a.slice();if(t>=1-1e-12)return b.slice();const r=Math.PI/180,A=[Math.cos(a[1]*r)*Math.cos(a[0]*r),Math.cos(a[1]*r)*Math.sin(a[0]*r),Math.sin(a[1]*r)],B=[Math.cos(b[1]*r)*Math.cos(b[0]*r),Math.cos(b[1]*r)*Math.sin(b[0]*r),Math.sin(b[1]*r)],angle=Math.acos(Math.min(1,Math.max(-1,A.reduce((v,x,i)=>v+x*B[i],0))));if(angle<1e-9)return a.map((v,i)=>v+(b[i]-v)*t);const s=Math.sin(angle),v=A.map((x,i)=>x*Math.sin((1-t)*angle)/s+B[i]*Math.sin(t*angle)/s);return [Math.atan2(v[1],v[0])/r,Math.atan2(v[2],Math.hypot(v[0],v[1]))/r]}
+export function trim(line,start=0,end=1){const total=length(line),lo=total*start,hi=total*end,out=[];let walked=0;for(let i=1;i<line.length;i++){const a=line[i-1],b=line[i],d=distance(a,b);if(d>1e-6&&walked+d>=lo&&walked<=hi){const x=between(a,b,Math.max(0,(lo-walked)/d)),y=between(a,b,Math.min(1,(hi-walked)/d));if(!out.length||distance(out.at(-1),x)>.01)out.push(x);if(distance(out.at(-1),y)>.01)out.push(y)}walked+=d}return out}
+export function resample(line,spacing){if(line.length<2||!line.every(validPoint))throw Error('中心线至少需要两个有效地图点。');const out=[line[0]];for(let i=1;i<line.length;i++){const d=distance(line[i-1],line[i]);if(d<.01)continue;const count=Math.ceil(d/spacing);if(count+out.length>5000)throw Error('航点超过 5000 个，请缩短范围或增加间距。');for(let j=1;j<=count;j++)out.push(between(line[i-1],line[i],j/count))}return out}
+export function planCorridor(features,options={}){
+ const {spacing=30,height=80,speed=5,start=0,end=1,reverse=false,connect=false}=options;
+ if(![spacing,height,speed,start,end].every(Number.isFinite)||spacing<5||spacing>1000||height<1||height>500||speed<.1||speed>30||start<0||end>1||start>=end)throw Error('检查间距、高度、速度及起终点范围。');
+ if(!features?.length||features.length>100)throw Error('选择 1 至 100 条道路或河流。');
+ const points=[],transits=[];let covered=0;
+ for(const f of features){if(f.geometry?.type!=='LineString')throw Error('地物必须为中心线。');let line=trim(f.geometry.coordinates,start,end);if(reverse)line=line.reverse();if(line.length<2)throw Error('起终点之间的中心线太短。');covered+=length(line);const sampled=resample(line,spacing),previous=points.at(-1);
+  if(previous){const gap=distance([previous.longitude,previous.latitude],sampled[0]);if(gap>1){transits.push({from:previous.feature_id,to:f.id,distance:gap});if(!connect)throw Error(`地物之间有 ${gap.toFixed(0)} 米衔接段。请调整顺序，或确认预览中的直线衔接。`);const join=resample([[previous.longitude,previous.latitude],sampled[0]],spacing);for(const p of join.slice(1,-1))points.push({longitude:p[0],latitude:p[1],height,speed,feature_id:'transit'})}}
+  for(const p of sampled){const last=points.at(-1);if(last&&distance([last.longitude,last.latitude],p)<.01)continue;points.push({longitude:p[0],latitude:p[1],height,speed,feature_id:String(f.id)})}
+  if(points.length>5000)throw Error('航点超过 5000 个，请缩短范围或增加间距。');
+ }
+ const metres=length(points.map(p=>[p.longitude,p.latitude]));return {waypoints:points,metres,seconds:metres/speed,covered,transits,heightMode:'relativeToStartPoint'};
+}
+export function nearestFraction(line,point){let best={distance:Infinity,fraction:0},walked=0,total=length(line);for(let i=1;i<line.length;i++){const a=line[i-1],b=line[i],scale=Math.cos(point[1]*Math.PI/180),x=(b[0]-a[0])*scale,y=b[1]-a[1],den=x*x+y*y,t=den?Math.max(0,Math.min(1,((point[0]-a[0])*scale*x+(point[1]-a[1])*y)/den)):0,p=between(a,b,t),d=distance(p,point),len=distance(a,b);if(d<best.distance)best={distance:d,fraction:(walked+t*len)/total};walked+=len}return best}
