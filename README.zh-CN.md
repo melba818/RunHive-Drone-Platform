@@ -59,7 +59,7 @@ RunHive 把 Agent 助手嵌进了每一个工作台。它不只是聊天 —— 
 
 ## 🚀 快速开始
 
-**只想试试？** 克隆本仓库后一条命令即可：`cd quickstart && docker compose up -d`，然后打开 <http://localhost:1819/>，用演示账号 `admin` / `runhive-demo` 登录。演示环境内置脱敏的种子数据库，零配置启动完整门户体验。详见 [quickstart/README.md](quickstart/README.md)。
+**只想试试？** 克隆本仓库后一条命令即可：`cd quickstart && docker compose up -d`，然后打开 <http://localhost:1819/>，用演示账号 `admin` / `runhive-demo` 登录。演示环境内置脱敏的种子数据库，零配置启动完整门户体验。**想要演示视频里的完整形态（RunOS、大模型中心、Agent 平台全包含）？** 在同一 `quickstart/` 目录改跑 `./start-full.sh`。详见 [quickstart/README.md](quickstart/README.md)。
 
 **从源码构建（开发环境）：**
 

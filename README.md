@@ -59,7 +59,7 @@ Projects, aircraft and dock management, flight tasks and records with OSD tracks
 
 ## 🚀 Quick start
 
-**Just want to try it?** Clone this repo and run one command — `cd quickstart && docker compose up -d` — then open <http://localhost:1819/> and log in with `admin` / `runhive-demo`. The quickstart boots the full portal experience against a sanitized demo database, no configuration needed. Details: [quickstart/README.md](quickstart/README.md).
+**Just want to try it?** Clone this repo and run one command — `cd quickstart && docker compose up -d` — then open <http://localhost:1819/> and log in with `admin` / `runhive-demo`. The quickstart boots the full portal experience against a sanitized demo database, no configuration needed. **Want the complete platform from the demo video — RunOS, the LLM center and the Agent platform included?** Run `./start-full.sh` in the same `quickstart/` directory instead. Details: [quickstart/README.md](quickstart/README.md).
 
 **Building from source (development):**
 
