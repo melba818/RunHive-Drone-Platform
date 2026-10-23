@@ -1,0 +1,10 @@
+.git
+.github
+docs
+quickstart/web
+quickstart/runtime
+quickstart/runtime-full
+quickstart/state-full
+quickstart/db-init
+*.tar.gz
+*.log
