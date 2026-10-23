@@ -234,3 +234,7 @@ coverage/
 /archive/
 /deploy/env/*.env
 /deploy/env/*.local
+
+quickstart/runtime-full/
+quickstart/state-full/
+quickstart/.env

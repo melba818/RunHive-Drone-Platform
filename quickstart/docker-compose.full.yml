@@ -1,0 +1,223 @@
+# RunHive FULL one-click deployment: portal + RunOS + LLM center + Agent platform.
+# Start it with ./start-full.sh (it exports the host paths the LLM control plane
+# needs in order to spawn per-account workspace containers).
+#
+# No secrets are stored in this repository. On first start the `init` service
+# generates fresh inter-service secrets into ./runtime-full/ (git-ignored).
+# To let the AI features call a model, put your OWN provider key in
+# quickstart/.env (see .env.example) before the first start.
+services:
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: runhive_root_demo
+      MARIADB_DATABASE: fly
+      MARIADB_USER: runhive_demo
+      MARIADB_PASSWORD: runhive_demo_pw
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./db-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - redis-data:/data
+
+  init:
+    image: alpine:3.20
+    command: ["sh", "/init/init-secrets.sh"]
+    environment:
+      RUNHIVE_LLM_API_KEY: ${RUNHIVE_LLM_API_KEY:-}
+      RUNHIVE_LLM_BASE_URL: ${RUNHIVE_LLM_BASE_URL:-}
+      RUNHIVE_LLM_MODEL: ${RUNHIVE_LLM_MODEL:-}
+    volumes:
+      - ./full/init-secrets.sh:/init/init-secrets.sh:ro
+      - ./runtime-full:/runtime-full
+      - ./state-full:/state-full
+
+  php:
+    build:
+      context: ..
+      dockerfile: quickstart/php/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+      init:
+        condition: service_completed_successfully
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      PHP_DATE_TIMEZONE: UTC
+      PHP_MEMORY_LIMIT: 512M
+      SERVICE_NGINX_CLIENT_MAX_BODY_SIZE: 100M
+      RUNOS_LAN_HOSTS: 127.0.0.1,localhost
+      RUNOS_LAN_PORT: ${RUNOS_PORT:-14000}
+    volumes:
+      - ./runtime-full:/srv/runhive/runtime
+
+  web:
+    image: nginx:1.29.4
+    restart: unless-stopped
+    depends_on:
+      - php
+    ports:
+      - "${DEMO_PORT:-1819}:80"
+    volumes:
+      - ./web:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+
+  runos-api:
+    build:
+      context: ..
+      dockerfile: quickstart/full/runos-api.Dockerfile
+    restart: unless-stopped
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      php:
+        condition: service_started
+      redis:
+        condition: service_started
+    environment:
+      RUNOS_DATA_ROOT: /srv/runhive/runtime/runos-data/admin-1
+      RUNOS_OWNER_ADMIN_ID: '1'
+      RUNOS_SHARED_CONFIG_ROOT: /srv/runhive/runtime/runos-data/admin-1
+      RUNOS_ALLOW_CROSS_TENANT_EXCHANGE: '1'
+      RUNOS_PROJECT_ROOT: /srv/runos/project
+      RUNOS_PRESERVE_TEMP: '1'
+      RUNOS_WRITE_DATASET_METADATA: '0'
+      RUNOS_SKIP_RUNTIME_INSTALL: '1'
+      NEXUSHIVE_API_URL: http://web:80
+      NEXUSHIVE_INTERNAL_SECRET_FILE: /srv/runhive/runtime/runos-internal-secret.txt
+      RUNOS_SESSION_SECRET_FILE: /srv/runhive/runtime/runos-session-secret.txt
+      RUNOS_FRONTEND_ORIGIN: http://127.0.0.1:${RUNOS_PORT:-14000}
+      PYTHONDONTWRITEBYTECODE: '1'
+    volumes:
+      - ./runtime-full:/srv/runhive/runtime
+      - runos-project:/srv/runos/project
+
+  runos-next:
+    build:
+      context: ..
+      dockerfile: quickstart/full/runos-next.Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - runos-api
+    environment:
+      BACKEND_URL: http://runos-api:8010
+      RUNOS_PROJECT_ROOT: /srv/runos/project
+      RUNHIVE_ORIGIN: http://127.0.0.1:${DEMO_PORT:-1819} http://localhost:${DEMO_PORT:-1819}
+    volumes:
+      - runos-project:/srv/runos/project
+
+  runos-proxy:
+    image: nginx:1.29.4
+    restart: unless-stopped
+    depends_on:
+      - runos-next
+    ports:
+      - "${RUNOS_PORT:-14000}:80"
+    volumes:
+      - ./full/runos-proxy.conf:/etc/nginx/conf.d/default.conf:ro
+
+  llm-gateway:
+    build:
+      context: ../services/llm-center/gateway
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    network_mode: host
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    environment:
+      LLM_BIND_ADDRESSES: 127.0.0.1,172.17.0.1
+      LLM_GATEWAY_PORT: '4020'
+      LLM_PHP_URL: http://127.0.0.1:${DEMO_PORT:-1819}
+      LLM_RUNTIME_URL: http://127.0.0.1:4021
+      LLM_INTERNAL_KEY_FILE: /secrets/llm-center-internal-secret.txt
+      LLM_RUNTIME_KEY_FILE: /secrets/llm-center-runtime-secret.txt
+      LLM_SESSION_DB: /state/gateway.db
+      PYTHONDONTWRITEBYTECODE: '1'
+    volumes:
+      - ./state-full/llm-center-gateway:/state
+      - ./runtime-full/llm-center-internal-secret.txt:/secrets/llm-center-internal-secret.txt:ro
+      - ./runtime-full/llm-center-runtime-secret.txt:/secrets/llm-center-runtime-secret.txt:ro
+
+  llm-control:
+    build:
+      context: ..
+      dockerfile: quickstart/full/llm-control.Dockerfile
+    restart: unless-stopped
+    network_mode: host
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    environment:
+      LLM_STATE_ROOT: /state
+      LLM_HOST_STATE_ROOT: "${RUNHIVE_HOST_ROOT:?run via start-full.sh}/quickstart/state-full/llm-center"
+      LLM_HOST_RUNTIME_SOURCE: "${RUNHIVE_HOST_ROOT:?run via start-full.sh}/services/llm-center/runtime"
+      LLM_HOST_BASE_MODELS: "${RUNHIVE_HOST_ROOT:?run via start-full.sh}/quickstart/state-full/base-models"
+      LLM_CONTROL_KEY_FILE: /run/secrets/runtime-key
+      LLM_PROVIDERS_FILE: /run/secrets/providers.json
+      LLM_RUNOS_JOBS_ROOT: /runhive-runtime/runos-data
+      LLM_FACTORY_IMAGE: runhive-llm-workspace:latest
+      # The Agent workbench runs a dedicated image built from the upstream
+      # PenguinHarness project; see quickstart/README.md. Until it exists,
+      # agent workspace sessions report the missing image instead of
+      # silently serving the wrong UI.
+      LLM_AGENT_IMAGE: runhive-agent-workspace:latest
+      LLM_DOCKER_BRIDGE_IP: 172.17.0.1
+      LLM_TENANT_UID: '0'
+      LLM_CONTROL_PORT: '4021'
+      LLM_TUNE_ROOT_PATH: /llm-center/tune
+      LLM_TUNE_PORT_START: '40100'
+      LLM_AGENT_PORT_START: '41100'
+      PYTHONDONTWRITEBYTECODE: '1'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./state-full/llm-center:/state
+      - ./runtime-full/llm-center-runtime-secret.txt:/run/secrets/runtime-key:ro
+      - ./runtime-full/providers.json:/run/secrets/providers.json:ro
+      - ./runtime-full:/runhive-runtime:ro
+
+  agent-platform:
+    build:
+      context: ..
+      dockerfile: quickstart/full/agent-platform.Dockerfile
+    restart: unless-stopped
+    network_mode: host
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      php:
+        condition: service_started
+    environment:
+      PLATFORM_PORT: '4022'
+      PLATFORM_BIND_ADDRESSES: 127.0.0.1,172.17.0.1
+      PYTHONDONTWRITEBYTECODE: '1'
+    volumes:
+      - ./runtime-full/llm-center-internal-secret.txt:/secrets/llm-center-internal-secret.txt:ro
+      - ./runtime-full/llm-center-runtime-secret.txt:/secrets/llm-center-runtime-secret.txt:ro
+
+  # Build-only: the per-account fine-tuning workspace image. The LLM control
+  # plane starts containers from it on demand; compose never runs it.
+  llm-workspace:
+    build:
+      context: ..
+      dockerfile: quickstart/full/llm-workspace.Dockerfile
+    image: runhive-llm-workspace:latest
+    profiles: ["build"]
+
+volumes:
+  db-data:
+  redis-data:
+  runos-project:
