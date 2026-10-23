@@ -11,10 +11,10 @@ services:
     image: mariadb:10.11
     restart: unless-stopped
     environment:
-      MARIADB_ROOT_PASSWORD: runhive_root_demo
+      MARIADB_ROOT_PASSWORD: <redacted>
       MARIADB_DATABASE: fly
       MARIADB_USER: runhive_demo
-      MARIADB_PASSWORD: runhive_demo_pw
+      MARIADB_PASSWORD: <redacted>
     volumes:
       - db-data:/var/lib/mysql
       - ./db-init:/docker-entrypoint-initdb.d:ro
