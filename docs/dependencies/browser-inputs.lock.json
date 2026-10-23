@@ -1,0 +1,432 @@
+{
+  "npm_cache": {
+    "bytes": 171878400,
+    "sha256": "16e3047985c986f168add71ce3229b64828ab9395ea5e5515b20524830ac1e3d"
+  },
+  "browser": {
+    "bytes": 124406717,
+    "sha256": "4cea4c32b501aa43cc2b81eb45734af991a6a82feded48380d6dfaf96642a1c1"
+  },
+  "browser_runtime": [
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libdl.so.2",
+      "name": "libdl.so.2",
+      "bytes": 14408,
+      "sha256": "c2994527172cc23b7fb0f7d611b71e00a37da27af12c2e5e9e0dc1a742886c96",
+      "package": "libc6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libpthread.so.0",
+      "name": "libpthread.so.0",
+      "bytes": 14408,
+      "sha256": "90491a21ce44efcf3bd4b65ec82501c091d7ebe7f8d9b341dd01d721001d9ecd",
+      "package": "libc6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.8000.0",
+      "name": "libglib-2.0.so.0",
+      "bytes": 1343056,
+      "sha256": "96ef9163aee942bdc09e6f4a1acd2fd6b178c03af824c569741440d63ac9f4f4",
+      "package": "libglib2.0-0t64:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.8000.0",
+      "name": "libgobject-2.0.so.0",
+      "bytes": 399752,
+      "sha256": "7a8981c2df678797438cc92f246402b81d185604623d12ab71c1ff1c2840e9fc",
+      "package": "libglib2.0-0t64:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libnspr4.so",
+      "name": "libnspr4.so",
+      "bytes": 246248,
+      "sha256": "c32583a53640c144757419b977a76976ee3dbda7b905a0af1046ace3c570ae98",
+      "package": "libnspr4:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libnss3.so",
+      "name": "libnss3.so",
+      "bytes": 1229736,
+      "sha256": "55b09461bb63081b8e1d4f600583b0e1fdb8eff1ebe2f25e44cfa5f45b2d4169",
+      "package": "libnss3:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libnssutil3.so",
+      "name": "libnssutil3.so",
+      "bytes": 199128,
+      "sha256": "39deb60cb4cd5a8b1ee4da37f838de80c65258a81428a4bdb668ffd6f93a9501",
+      "package": "libnss3:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.8000.0",
+      "name": "libgio-2.0.so.0",
+      "bytes": 1887632,
+      "sha256": "d72a56593ae024d868cb7b494f7e48c76e90e4ced9498ab4da2eb3bece85bda3",
+      "package": "libglib2.0-0t64:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libatk-1.0.so.0.25209.1",
+      "name": "libatk-1.0.so.0",
+      "bytes": 170064,
+      "sha256": "d312f3dbed8f19037bf4d8581f0e41ddfe53796dc7abbc9b7f253495d472a923",
+      "package": "libatk1.0-0t64:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libatk-bridge-2.0.so.0.0.0",
+      "name": "libatk-bridge-2.0.so.0",
+      "bytes": 243912,
+      "sha256": "366fcd2f2cd9a77767855a7c25b00ffce57e6b55109a2bf800872f0337a28415",
+      "package": "libatk-bridge2.0-0t64:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libdbus-1.so.3.32.4",
+      "name": "libdbus-1.so.3",
+      "bytes": 317752,
+      "sha256": "a6ae7b4ef48562b40d7b9ba8efd2e49f6528b7cc6364bea382dcee4b473b5413",
+      "package": "libdbus-1-3:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libm.so.6",
+      "name": "libm.so.6",
+      "bytes": 952616,
+      "sha256": "fce00b6f25f459cf4ae0b7fae4257909a1a8a86f9149e7c029a5d617baf1ccd0",
+      "package": "libc6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0",
+      "name": "libX11.so.6",
+      "bytes": 1298088,
+      "sha256": "c5b5d782bd9cab3420a62df88f5c991507edf3331a89f98464ddbc538c37b879",
+      "package": "libx11-6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libXcomposite.so.1.0.0",
+      "name": "libXcomposite.so.1",
+      "bytes": 14464,
+      "sha256": "675c78d8d5b088a59ad4f8eb15419d0842b17caca3317a5e9f68573171ec5d61",
+      "package": "libxcomposite1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libXdamage.so.1.1.0",
+      "name": "libXdamage.so.1",
+      "bytes": 14488,
+      "sha256": "6ff910fbde851ede163b9066671e1740e374df414591015d90770b99d5b3de4a",
+      "package": "libxdamage1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libXext.so.6.4.0",
+      "name": "libXext.so.6",
+      "bytes": 77512,
+      "sha256": "2907e6a996465de5b32a0dd10534d4416b87f1dee5670aaa7b19301a1fc93f44",
+      "package": "libxext6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libXfixes.so.3.1.0",
+      "name": "libXfixes.so.3",
+      "bytes": 26800,
+      "sha256": "89e5897f438456013d2297850a7558cd28c9ad1f6978447197568949fb6a0fd9",
+      "package": "libxfixes3:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libXrandr.so.2.2.0",
+      "name": "libXrandr.so.2",
+      "bytes": 47504,
+      "sha256": "bc6120a734d52e7f5e3611334e9f3cff0b3ce1b129bb20b6412ce8f0f62c049d",
+      "package": "libxrandr2:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libgbm.so.1.0.0",
+      "name": "libgbm.so.1",
+      "bytes": 22976,
+      "sha256": "66f584160554d07f03d2a2fd1037d6af8f071e189c92438a77924e99c4572f0d",
+      "package": "libgbm1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libexpat.so.1.9.1",
+      "name": "libexpat.so.1",
+      "bytes": 186624,
+      "sha256": "ec6c12d33bb8f9d0e90804121adf19930f36b1b2a4aeb6e1a454b89c7a50c801",
+      "package": "libexpat1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0",
+      "name": "libxcb.so.1",
+      "bytes": 162392,
+      "sha256": "7958a0136b121bdc4c708968569ad152a9ed208ab026e2537b1005dde64ca440",
+      "package": "libxcb1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libxkbcommon.so.0.0.0",
+      "name": "libxkbcommon.so.0",
+      "bytes": 293432,
+      "sha256": "3eb6c7315985803a7c72cb81aa3293b763e6cfc907b70b7b2f641c2827cd90f9",
+      "package": "libxkbcommon0:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libudev.so.1.7.8",
+      "name": "libudev.so.1",
+      "bytes": 207288,
+      "sha256": "4298228175fa62a36af88b1afd4406cdd8b1bf166621f957d0dbbde45a698fe5",
+      "package": "libudev1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libasound.so.2.0.0",
+      "name": "libasound.so.2",
+      "bytes": 1084144,
+      "sha256": "ff4c69ef420f2d0ab92c813d2222d097c6a7eafe3b13952aed069e2bb0204f55",
+      "package": "libasound2t64:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libatspi.so.0.0.1",
+      "name": "libatspi.so.0",
+      "bytes": 235904,
+      "sha256": "4af877d2d235b7eaab015abe6d81b82c82fe506a5d71403b9bbdfcbce99e8141",
+      "package": "libatspi2.0-0t64:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libgcc_s.so.1",
+      "name": "libgcc_s.so.1",
+      "bytes": 183024,
+      "sha256": "d93224d2b0dab4247598be683adca02f5cf00586f99c187579cd7e92058fb7cb",
+      "package": "libgcc-s1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libc.so.6",
+      "name": "libc.so.6",
+      "bytes": 2129424,
+      "sha256": "3a15d66867d83762c7f2f1e37359cb8f6c5743edb369c65285cb0b1c4f7498bf",
+      "package": "libc6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+      "name": "ld-linux-x86-64.so.2",
+      "bytes": 236616,
+      "sha256": "c20a2dc8917c755f02b94049356320fe1f62ac7d9f8994731f807d9df39302da",
+      "package": "libc6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libnssckbi.so",
+      "name": "libnssckbi.so",
+      "bytes": 588912,
+      "sha256": "ad8090a7d9f03a0c3ee91ce9c39745aadf93f5cd34a9a2c602f2ddaf59537a53",
+      "package": "libnss3:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libfontconfig.so.1.12.1",
+      "name": "libfontconfig.so.1",
+      "bytes": 325712,
+      "sha256": "a94b4059b27766f563894c8f7e61762b6f6b2e25c59ef36b730164d4b75c6c98",
+      "package": "libfontconfig1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libfreetype.so.6.20.1",
+      "name": "libfreetype.so.6",
+      "bytes": 833608,
+      "sha256": "c14c53c5baff12afafb610c6312fb879e9bb77e80dd42e27504d52d6d8bcd059",
+      "package": "libfreetype6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.11.2",
+      "name": "libpcre2-8.so.0",
+      "bytes": 625344,
+      "sha256": "e00576d71d81d3ba0cfa4903c835a44a8723aac96f72f79ff75200b4cff9071b",
+      "package": "libpcre2-8-0:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libffi.so.8.1.4",
+      "name": "libffi.so.8",
+      "bytes": 47672,
+      "sha256": "00f593fe192f2851b8ce23b25cec2488d769beb5a8f63e8c9e563071e1075153",
+      "package": "libffi8:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libplc4.so",
+      "name": "libplc4.so",
+      "bytes": 22784,
+      "sha256": "f68520b4a9ba6190c67ce96511192f9af31dd96d91f18fd64cca48ffe08f7deb",
+      "package": "libnspr4:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libplds4.so",
+      "name": "libplds4.so",
+      "bytes": 14624,
+      "sha256": "403f3c1ec489de93d04b5a386d2e659af6da0a41e09ffb90a280b6d68eeb1617",
+      "package": "libnspr4:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0.8000.0",
+      "name": "libgmodule-2.0.so.0",
+      "bytes": 22736,
+      "sha256": "556b3e8f3c18dbb0255971b1792a076dbd07338482927fe7f9f6c597b1801833",
+      "package": "libglib2.0-0t64:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libz.so.1.3",
+      "name": "libz.so.1",
+      "bytes": 113000,
+      "sha256": "86200da370f20476a2507e9097a789b5ef97269b4ca8d5e164ad82dab9d99892",
+      "package": "zlib1g:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libmount.so.1.1.0",
+      "name": "libmount.so.1",
+      "bytes": 309960,
+      "sha256": "7472255ae5799059b37ddd544788f5665dbd3e1cb78259f52180293039efc2a5",
+      "package": "libmount1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libselinux.so.1",
+      "name": "libselinux.so.1",
+      "bytes": 174472,
+      "sha256": "0ec0843463f90e227b0e138e1f379774f50b5514bd7f5dbd4c8a87aca0aa6670",
+      "package": "libselinux1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libsystemd.so.0.38.0",
+      "name": "libsystemd.so.0",
+      "bytes": 910592,
+      "sha256": "bdf59c828b547bcdbe7b3576c0810d9d9d2e982d8b61b365812542da6a4c4a99",
+      "package": "libsystemd0:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libXrender.so.1.3.0",
+      "name": "libXrender.so.1",
+      "bytes": 43600,
+      "sha256": "250977e0e004b6c0556144c3e683487063b4582dc83d205196ec3aa65d54e2c6",
+      "package": "libxrender1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libdrm.so.2.125.0",
+      "name": "libdrm.so.2",
+      "bytes": 92760,
+      "sha256": "ff39219aa058421e46afd36851342370cd1932d2557eb22f54e129755642bf67",
+      "package": "libdrm2:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libXau.so.6.0.0",
+      "name": "libXau.so.6",
+      "bytes": 18696,
+      "sha256": "8040da3f8516c1acfe39f04ff022480cdb273705ba5e7a4ca70bbdb1527cd67a",
+      "package": "libxau6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libXdmcp.so.6.0.0",
+      "name": "libXdmcp.so.6",
+      "bytes": 26776,
+      "sha256": "667d97d6da16016400ab10de9f83ef4ab209ceb6adf68ff9650225ec13e723b0",
+      "package": "libxdmcp6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libcap.so.2.66",
+      "name": "libcap.so.2",
+      "bytes": 51536,
+      "sha256": "6ac6abc86ac891c6e13486470e26f1d939f47fda9e6b5d5508a7f5ec881adc84",
+      "package": "libcap2:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libXi.so.6.1.0",
+      "name": "libXi.so.6",
+      "bytes": 76320,
+      "sha256": "a51348c921ce1a35123fa7c99dc59bfd3e815be6829874fe15ae55172901d3e4",
+      "package": "libxi6:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libbz2.so.1.0.4",
+      "name": "libbz2.so.1.0",
+      "bytes": 78944,
+      "sha256": "cc08c9f50a8009ffd6391e0116a100369b11ca9238fa52392c019e6645b122a1",
+      "package": "libbz2-1.0:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libpng16.so.16.43.0",
+      "name": "libpng16.so.16",
+      "bytes": 223304,
+      "sha256": "eac265b3506df0d9110dd9143e1d0503e2daabafe1d98b23fac8ca17b71d1f6b",
+      "package": "libpng16-16t64:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libbrotlidec.so.1.1.0",
+      "name": "libbrotlidec.so.1",
+      "bytes": 51512,
+      "sha256": "64d8a5019d4c294b89fde1193343ea324bbd8603652554e5545f0a01595fa2c5",
+      "package": "libbrotli1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libblkid.so.1.1.0",
+      "name": "libblkid.so.1",
+      "bytes": 236592,
+      "sha256": "9c3860ffab5422410ff9e073d3e82267f00bc68ff1248cbb191640ee2ff045bc",
+      "package": "libblkid1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libgcrypt.so.20.4.3",
+      "name": "libgcrypt.so.20",
+      "bytes": 1345072,
+      "sha256": "6ad6d7007ee1ad8319eb18ba9a512cf09dda49396a303774c68b47477020bad4",
+      "package": "libgcrypt20:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/liblz4.so.1.9.4",
+      "name": "liblz4.so.1",
+      "bytes": 137440,
+      "sha256": "40bffd0a098387368b16b992abd5f7cf43c0fa2f05cabe5a6d483719554adfda",
+      "package": "liblz4-1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/liblzma.so.5.4.5",
+      "name": "liblzma.so.5",
+      "bytes": 202904,
+      "sha256": "696e868dd0700a19a6d65fc01608ec2d70d3cb91f65710e89180cd2e688f30cb",
+      "package": "liblzma5:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libzstd.so.1.5.5",
+      "name": "libzstd.so.1",
+      "bytes": 755864,
+      "sha256": "0a2128bc10841fb29e76d08d945864dfb0b6a66da5df6df5d8299197439e54bb",
+      "package": "libzstd1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libbsd.so.0.12.1",
+      "name": "libbsd.so.0",
+      "bytes": 80888,
+      "sha256": "e86cd4f0019f42c2ba5e60602e0edc8694d2948377d98c3654d0f6bddb5254bb",
+      "package": "libbsd0:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libbrotlicommon.so.1.1.0",
+      "name": "libbrotlicommon.so.1",
+      "bytes": 141640,
+      "sha256": "a91ead095d2c80520c55a89057bbe10b031a075340442e63f44b310f93883a1b",
+      "package": "libbrotli1:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libgpg-error.so.0.34.0",
+      "name": "libgpg-error.so.0",
+      "bytes": 149760,
+      "sha256": "6cb18a007bfcb623029f4528a36b46578fea7dc34c2b505b8e6e0d99e6348cd1",
+      "package": "libgpg-error0:amd64"
+    },
+    {
+      "source": "/usr/lib/x86_64-linux-gnu/libmd.so.0.1.0",
+      "name": "libmd.so.0",
+      "bytes": 55536,
+      "sha256": "423e18586b6ea740f4465afd64f7a9a4cb7264ed979c8e7256f9085af5345fef",
+      "package": "libmd0:amd64"
+    },
+    {
+      "source": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "name": "font:DejaVuSans.ttf",
+      "bytes": 759720,
+      "sha256": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280",
+      "package": "fonts-dejavu-core"
+    },
+    {
+      "source": "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+      "name": "font:NotoSansCJK-Regular.ttc",
+      "bytes": 19484784,
+      "sha256": "b76b0433203017ca80401b2ee0dd69350349871c4b19d504c34dbdd80541690a",
+      "package": "fonts-noto-cjk"
+    }
+  ]
+}

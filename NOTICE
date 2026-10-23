@@ -1,0 +1,83 @@
+RunHive
+Copyright (c) 2026 RunHive Authors
+
+This product includes software developed by third parties. The components
+below are NOT covered by the MIT License in the root LICENSE file unless
+stated otherwise; each keeps its own license, which is reproduced or
+referenced as noted.
+
+======================================================================
+PenguinHarness (Agent runtime and web)
+----------------------------------------------------------------------
+The Agent layer of RunHive is built on PenguinHarness, an open-source
+multi-agent application platform, integrated under the Apache License 2.0.
+Upstream: https://github.com/Prism-Shadow/penguin-harness
+The copy integrated with this project corresponds to PenguinHarness
+v0.2.13 with RunHive-specific adaptations (branding, navigation, RunOS
+integration). PenguinHarness itself carries a THIRD-PARTY-NOTICES file
+that remains authoritative for its own bundled components.
+License text: licenses/Apache-2.0.txt
+
+======================================================================
+OSTrack / PyTracking lineage (object-tracking library)
+----------------------------------------------------------------------
+services/runos-api includes, under its lmm/tracking/_vendor directory, a
+vendored copy of the OSTrack visual object tracking library
+(https://github.com/botaoye/OSTrack), which is distributed by its authors
+under the MIT License. Parts of that library's training and testing
+framework derive from PyTracking (https://github.com/visionml/pytracking),
+which is distributed under the GNU General Public License v3.0.
+This vendored directory is a third-party component: it is distributed
+with its upstream attribution and is NOT relicensed under this project's
+MIT License. See the README inside that directory for the per-component
+notes before redistributing it.
+
+======================================================================
+timm interface reimplementation
+----------------------------------------------------------------------
+The tracking module contains a small, independently written substitute
+for a subset of the timm (PyTorch Image Models) API surface
+(https://github.com/huggingface/pytorch-image-models, Apache License 2.0,
+Copyright Ross Wightman). It implements compatible interfaces for the
+functions the tracking code needs; it is not a copy of timm code.
+
+======================================================================
+ThinkPHP and BuildAdmin (PHP backend framework)
+----------------------------------------------------------------------
+The PHP backend is built on the ThinkPHP framework and the BuildAdmin
+admin scaffold, both distributed under the Apache License 2.0
+(ThinkPHP: https://github.com/top-think/think ;
+BuildAdmin: https://github.com/build-admin/BuildAdmin).
+Framework code is pulled in as Composer dependencies and is not vendored
+into this repository; the installer controller shipped by the framework
+is likewise provided by the upstream packages. Business controllers and
+RunHive-specific modules in services/php are original RunHive code under
+the MIT License.
+License text: licenses/Apache-2.0.txt
+
+======================================================================
+Fonts
+----------------------------------------------------------------------
+The web UI bundles the following fonts, each under the SIL Open Font
+License 1.1 (MiSans under its own license terms as recorded upstream).
+Their full license texts ship inside the repository at
+apps/agent-web/ui/src/fonts/LICENSES/ :
+  - MiSans (Xiaomi)
+  - Mona Sans (GitHub)
+  - JetBrains Mono (JetBrains)
+  - IBM Plex Sans and IBM Plex Sans Condensed (IBM)
+  - Noto Sans SC (Google)
+
+======================================================================
+Icons
+----------------------------------------------------------------------
+Icons in the web UI derive from Lucide (ISC License) and Feather Icons
+(MIT License, Copyright Cole Bemis). Their notices are retained in the
+vendored icon sources.
+
+======================================================================
+Runtime and library dependencies
+----------------------------------------------------------------------
+All other third-party libraries (Composer, npm and pip dependencies) are
+resolved through the lockfiles of the respective modules and keep their
+own licenses, recorded in those lockfiles and package metadata.

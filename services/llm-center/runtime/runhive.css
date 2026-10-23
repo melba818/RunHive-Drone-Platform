@@ -1,0 +1,27 @@
+/* Runhive controls and native section navigation. */
+:root { --body-background-fill:#f5f7fa; --background-fill-primary:#fff; --background-fill-secondary:#f5f7fa; --button-primary-background-fill:#409eff; --button-primary-background-fill-hover:#66b1ff; --button-primary-text-color:#fff; --button-secondary-background-fill:#fff; --button-secondary-border-color:#bfdcff; --block-border-color:#e4e7ed; --block-radius:6px; --button-small-radius:6px; --button-large-radius:6px; --input-radius:6px; --font:"Microsoft YaHei","PingFang SC",Arial,sans-serif; }
+html,body,.gradio-container { margin:0; background:#f5f7fa!important; color:#303133; font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif!important; font-size:14px!important; }
+.gradio-container { max-width:none!important; padding:20px 24px!important; }
+.gradio-container button,.gradio-container input,.gradio-container textarea { border-radius:6px!important; font-size:14px!important; box-shadow:none!important; }
+.gradio-container button.primary { background:#409eff!important; border-color:#409eff!important; color:#fff!important; }
+.gradio-container .block { border-color:#e4e7ed!important; border-radius:6px!important; box-shadow:none!important; }
+.gradio-container a { color:#409eff; }
+/* Keep width measurable: display:none makes Gradio move tabs into its overflow
+   menu, removing the controls needed by the outer sidebar. */
+#runhive-tune-sections > .tab-nav,#runhive-tune-sections > .tab-wrapper { height:0!important; min-height:0!important; overflow:hidden!important; visibility:hidden; pointer-events:none; margin:0!important; }
+#runhive-tune-sections { border:0!important; background:transparent!important; }
+body:not([data-rh-tune-section]) #rh-tune-model-controls,body[data-rh-tune-section="workspace"] #rh-tune-model-controls,body[data-rh-tune-section="data"] #rh-tune-model-controls { display:none!important; }
+.export-links { display:flex; flex-wrap:wrap; gap:8px; }
+.export-download { display:inline-block; padding:7px 12px; border:1px solid #bfdcff; border-radius:6px; background:#fff; color:#409eff; font-size:14px; text-decoration:none; }
+.gradio-container footer { display:none!important; }
+@media (max-width:768px) { .gradio-container { padding:12px!important; } }
+.rh-resource-bridge { display:none!important; }
+.rh-task-table { width:100%; overflow:auto; }
+.rh-task-table table { width:100%; border-collapse:collapse; table-layout:fixed; font-size:13px; color:#303133; }
+.rh-task-table th,.rh-task-table td { padding:10px 12px; border-bottom:1px solid #ebeef5; text-align:left; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.rh-task-table th { color:#909399; font-weight:500; background:#f7f9fc; }
+.rh-task-table th:nth-child(2) { width:80px; }
+.rh-task-table th:last-child { width:32px; }
+.rh-task-table button { width:28px; height:26px; border:0; border-radius:5px; color:#909399; background:transparent; cursor:pointer; }
+.rh-task-table button:hover { color:#409eff; background:#ecf5ff; }
+.rh-task-empty { color:#909399; font-size:13px; padding:12px 0; }

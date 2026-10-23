@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>大模型中心</title>
+<style>html,body{height:100%;margin:0;font-family:"Microsoft YaHei",Arial,sans-serif;background:#f5f8fc;color:#303133}.gate{height:100%;display:flex;justify-content:center;align-items:center}.card{display:flex;flex-direction:column;align-items:center;gap:14px;padding:24px;max-width:520px;text-align:center}.runos-spinner{width:28px;height:28px;box-sizing:content-box;border:3px solid #dbeafe;border-top-color:#409eff;border-radius:50%;animation:runos-spin .8s linear infinite}p{margin:0;font-size:14px;line-height:1.8;color:#606266}button{border:0;border-radius:6px;background:#409eff;color:white;padding:8px 16px;cursor:pointer;font-size:12px}[hidden]{display:none}@keyframes runos-spin{to{transform:rotate(360deg)}}</style></head>
+<body><main class="gate"><section class="card" role="status"><span id="spinner" class="runos-spinner" aria-hidden="true"></span><p id="status">正在准备工作区…</p><button id="retry" hidden>重新加载</button></section></main>
+<script>
+(async()=>{
+ const status=document.getElementById('status'),retry=document.getElementById('retry');
+ const fragment=new URLSearchParams(location.hash.slice(1));
+ const ticket=fragment.get('ticket'),expected=fragment.get('admin_id');
+ const module=location.pathname.split('/')[2],prefix='/llm-center/'+module;
+ const title=module==='agent'?'Agent中心':'大模型中心';document.title=title;status.textContent='正在加载'+title+'工作区…';
+ const sections={tune:['workspace','data','train','eval','chat','export'],agent:['projects','agents','skills','models','runs','evaluations']};
+ const candidate=fragment.get('section'),section=(sections[module]||[]).includes(candidate)?candidate:sections[module]?.[0];
+ history.replaceState(null,'',location.pathname);
+ const notify=(type,data)=>parent.postMessage({source:'llm-center-auth-gate',type,module,...data},location.origin);
+ try {
+  if(!sections[module]||(fragment.get('module')&&fragment.get('module')!==module))throw Error('中心身份验证失败，请重新进入');
+  const response=await fetch(prefix+(ticket?'/auth/exchange':'/auth/ready'),{
+   method:ticket?'POST':'GET',credentials:'same-origin',headers:ticket?{'Content-Type':'application/json'}:{},
+   ...(ticket?{body:JSON.stringify({ticket,admin_id:expected,module})}:{})
+  });
+  const result=await response.json();
+  if(!response.ok||!result.ready||result.module!==module)throw Error(typeof result.detail==='string'?result.detail:'当前中心暂时不可用');
+  if(expected&&String(result.admin_id)!==expected)throw Error('账号身份验证失败，请重新进入'+title);
+  notify('llm-center-auth-ready',{admin_id:result.admin_id});
+  location.replace(prefix+'/ui/?section='+encodeURIComponent(section));
+ } catch(error) {
+  const message=error instanceof Error&&/[\u4e00-\u9fff]/.test(error.message)?error.message:'连接'+title+'失败，请稍后重试';
+  document.getElementById('spinner').hidden=true;status.textContent=message;retry.hidden=false;
+  notify('llm-center-auth-error',{message,admin_id:Number(expected)||0});
+ }
+ retry.addEventListener('click',()=>location.reload());
+})();
+</script></body></html>

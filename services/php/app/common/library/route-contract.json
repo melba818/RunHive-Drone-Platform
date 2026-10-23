@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "max_bytes": 4194304,
+  "max_points": 5000,
+  "create_fields": ["name", "project_id", "airline_floder_id", "type", "scene", "kmz_json", "waypoints", "settings", "takeoff"],
+  "update_fields": ["name", "project_id", "airline_floder_id", "type", "scene", "kmz_json", "waypoints", "settings", "takeoff", "revision"],
+  "readonly_fields": ["id", "kmz", "kmz_md5", "template", "wayline", "point_num", "total_point", "mileage", "execution_time", "create_time", "update_time"],
+  "numeric_fields": {
+    "index": [0, 4999, true], "executeHeight": [-500, 10000], "height": [-500, 10000], "ellipsoidHeight": [-500, 10000],
+    "globalHeight": [-500, 10000], "waypointSpeed": [0.1, 50], "autoFlightSpeed": [0.1, 50], "globalTransitionalSpeed": [0.1, 50],
+    "globalRTHHeight": [0, 10000], "takeOffSecurityHeight": [0, 10000], "gimbalPitchAngle": [-120, 45],
+    "waypointHeadingAngle": [-360, 360], "aircraftHeading": [-360, 360], "gimbalPitchRotateAngle": [-120, 45],
+    "gimbalRollRotateAngle": [-360, 360], "gimbalYawRotateAngle": [-360, 360], "gimbalRotateTime": [0, 86400],
+    "waypointTurnDampingDist": [0, 100000], "hoverTime": [0, 86400], "focalLength": [0.1, 10000],
+    "actionGroupId": [0, 65535, true], "actionGroupStartIndex": [0, 4999, true], "actionGroupEndIndex": [0, 4999, true],
+    "actionId": [0, 65535, true], "templateId": [0, 65535, true], "waylineId": [0, 65535, true],
+    "droneEnumValue": [0, 65535, true], "droneSubEnumValue": [0, 65535, true], "payloadEnumValue": [0, 65535, true],
+    "payloadSubEnumValue": [0, 65535, true], "payloadPositionIndex": [0, 65535, true],
+    "useGlobalHeight": [0, 1, true], "useGlobalSpeed": [0, 1, true], "useGlobalHeading": [0, 1, true], "useGlobalHeadingParam": [0, 1, true],
+    "useGlobalTurnParam": [0, 1, true], "useStraightLine": [0, 1, true], "globalUseStraightLine": [0, 1, true], "isRisky": [0, 1, true],
+    "gimbalPitchRotateEnable": [0, 1, true], "gimbalRollRotateEnable": [0, 1, true], "gimbalYawRotateEnable": [0, 1, true],
+    "gimbalRotateTimeEnable": [0, 1, true], "useGlobalPayloadLensIndex": [0, 1, true], "isPointFocus": [0, 1, true], "isInfiniteFocus": [0, 1, true],
+    "focusX": [0, 1], "focusY": [0, 1], "focusRegionWidth": [0, 1], "focusRegionHeight": [0, 1],
+    "missionAutoRerouteMode": [0, 1, true], "transitionalAutoRerouteMode": [0, 1, true], "waylineAvoidLimitAreaMode": [0, 1, true]
+  }
+}

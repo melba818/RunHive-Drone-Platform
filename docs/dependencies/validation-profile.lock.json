@@ -1,0 +1,449 @@
+{
+  "status": "ISOLATED_VALIDATION_PROFILE_NOT_HISTORICAL_DEPLOYMENT_LOCK",
+  "image": "sha256:d1251042ecc6c990e3cc1442291935f949eb2ba6f4c5aa38cf5ba91a69bdcb0b",
+  "node": "22.23.3",
+  "python": "3.12.15",
+  "php": "8.3.6",
+  "mariadb": "10.11.13",
+  "public_trust": "Official HTTPS and package SHA-256 against InRelease indices; distribution GPG signatures not independently verified",
+  "packages": [
+    {
+      "Package": "mariadb-server-core",
+      "Version": "1:10.11.13-0ubuntu0.24.04.1",
+      "SHA256": "c83d98108f481f18253a9fa7d58485a8c59e2d4f6f8a706bf5e225d8236fbf70",
+      "Size": "8391888",
+      "Depends": "mariadb-common (>= 1:10.11.13-0ubuntu0.24.04.1), libc6 (>= 2.38), libcrypt1 (>= 1:4.1.0), libgcc-s1 (>= 3.0), libnuma1 (>= 2.0.11), libpcre2-8-0 (>= 10.22), libssl3t64 (>= 3.0.0), libstdc++6 (>= 13.1), libsystemd0 (>= 227), liburing2 (>= 2.3), zlib1g (>= 1:1.2.0)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/m/mariadb/mariadb-server-core_10.11.13-0ubuntu0.24.04.1_amd64.deb"
+    },
+    {
+      "Package": "mariadb-client-core",
+      "Version": "1:10.11.13-0ubuntu0.24.04.1",
+      "SHA256": "c79b4eff15c85662a38932f2e242f184ff31acdb2f95a46bed7576ad26663036",
+      "Size": "1037474",
+      "Depends": "libmariadb3 (>= 10.5.4), mariadb-common (>= 1:10.11.13-0ubuntu0.24.04.1), libc6 (>= 2.38), libedit2 (>= 2.11-20080614-0), libgcc-s1 (>= 3.0), libncurses6 (>= 6), libssl3t64 (>= 3.0.0), libstdc++6 (>= 4.1.1), libtinfo6 (>= 6), zlib1g (>= 1:1.1.4)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/m/mariadb/mariadb-client-core_10.11.13-0ubuntu0.24.04.1_amd64.deb"
+    },
+    {
+      "Package": "mariadb-server",
+      "Version": "1:10.11.13-0ubuntu0.24.04.1",
+      "SHA256": "9d04bac1a8e61de550de41dab57b124794c141c3173050436bcf8199cf0a7b0a",
+      "Size": "3463852",
+      "Depends": "galera-4 (>= 26.4), gawk, iproute2, libdbi-perl, lsof, mariadb-client (>= 1:10.11.13-0ubuntu0.24.04.1), mariadb-server-core (>= 1:10.11.13-0ubuntu0.24.04.1), passwd, perl (>= 5.6), procps, psmisc, rsync, socat, debconf (>= 0.5) | debconf-2.0, libc6 (>= 2.38), libgcc-s1 (>= 3.0), libpam0g (>= 0.99.7.1), libssl3t64 (>= 3.0.0), libstdc++6 (>= 13.1), zlib1g (>= 1:1.1.4)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/m/mariadb/mariadb-server_10.11.13-0ubuntu0.24.04.1_amd64.deb"
+    },
+    {
+      "Package": "mariadb-common",
+      "Version": "1:10.11.13-0ubuntu0.24.04.1",
+      "SHA256": "05e0cfcf92e9b6286439a71c19184ae4732e7d44d48645108e932d335f8518b7",
+      "Size": "28288",
+      "Depends": "mysql-common (>= 5.6.25)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/m/mariadb/mariadb-common_10.11.13-0ubuntu0.24.04.1_all.deb"
+    },
+    {
+      "Package": "libaio1t64",
+      "Version": "0.3.113-6build1.1",
+      "SHA256": "433212b33e26d424605c01cec1de33b63f2cc12870987b4cb7b3625baba66a19",
+      "Size": "7210",
+      "Depends": "libc6 (>= 2.4)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/liba/libaio/libaio1t64_0.3.113-6build1.1_amd64.deb"
+    },
+    {
+      "Package": "liburing2",
+      "Version": "2.5-1build1",
+      "SHA256": "c2aef62accee92a06263c3ad4ef46132c13e409b54296c44792a20491830a7b0",
+      "Size": "21092",
+      "Depends": "libc6 (>= 2.4)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libu/liburing/liburing2_2.5-1build1_amd64.deb"
+    },
+    {
+      "Package": "libnuma1",
+      "Version": "2.0.18-1ubuntu0.24.04.1",
+      "SHA256": "f333b8edf6f0b705c19f2a67008194df66f7aab0fa2350dc98510569a033ff29",
+      "Size": "23396",
+      "Depends": "libc6 (>= 2.38)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/numactl/libnuma1_2.0.18-1ubuntu0.24.04.1_amd64.deb"
+    },
+    {
+      "Package": "libsnappy1v5",
+      "Version": "1.1.10-1build1",
+      "SHA256": "c44dfa3b8be7c2873efb770890cb282a36a7e59b3b1900cb50d99f92e6be2da5",
+      "Size": "28634",
+      "Depends": "libc6 (>= 2.14), libstdc++6 (>= 5.2)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/snappy/libsnappy1v5_1.1.10-1build1_amd64.deb"
+    },
+    {
+      "Package": "libzstd1",
+      "Version": "1.5.5+dfsg2-2build1.1",
+      "SHA256": "dfcf25061e07aad7efd3f4f880ba5ad4d4d09ebe7fc8cc77ab6b8a161d6d4727",
+      "Size": "299472",
+      "Depends": "libc6 (>= 2.34)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libz/libzstd/libzstd1_1.5.5+dfsg2-2build1.1_amd64.deb"
+    },
+    {
+      "Package": "libncurses6",
+      "Version": "6.4+20240113-1ubuntu2.2",
+      "SHA256": "59e8527dfd14473393960bfb7c69566f1ad9d576423421dcb8b8dcdbb3e7fca1",
+      "Size": "111902",
+      "Depends": "libtinfo6 (= 6.4+20240113-1ubuntu2.2), libc6 (>= 2.34)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/ncurses/libncurses6_6.4+20240113-1ubuntu2.2_amd64.deb"
+    },
+    {
+      "Package": "libatomic1",
+      "Version": "14.2.0-4ubuntu2~24.04.1",
+      "SHA256": "fe49cbbc7be753528380c724a8eef5f1e31dffa9221f692c5069048d81c7449d",
+      "Size": "10466",
+      "Depends": "gcc-14-base (= 14.2.0-4ubuntu2~24.04.1), libc6 (>= 2.14)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/libatomic1_14.2.0-4ubuntu2~24.04.1_amd64.deb"
+    },
+    {
+      "Package": "libgcc-s1",
+      "Version": "14.2.0-4ubuntu2~24.04.1",
+      "SHA256": "aa7fadbe33b78bcf99885318040601c550c208929565b179891d9a3cc2aa68cd",
+      "Size": "78392",
+      "Depends": "gcc-14-base (= 14.2.0-4ubuntu2~24.04.1), libc6 (>= 2.35)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/libgcc-s1_14.2.0-4ubuntu2~24.04.1_amd64.deb"
+    },
+    {
+      "Package": "libstdc++6",
+      "Version": "14.2.0-4ubuntu2~24.04.1",
+      "SHA256": "a51f8de7829211db961a31f02158058ad1a95f92ac6d0a5dff6350e2821c54c0",
+      "Size": "792064",
+      "Depends": "gcc-14-base (= 14.2.0-4ubuntu2~24.04.1), libc6 (>= 2.38), libgcc-s1 (>= 4.3)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/g/gcc-14/libstdc++6_14.2.0-4ubuntu2~24.04.1_amd64.deb"
+    },
+    {
+      "Package": "liblz4-1",
+      "Version": "1.9.4-1build1.1",
+      "SHA256": "319331270d5cc52d5ebffe51c941d7b01b432bc402c2924b557209a64d4ecbad",
+      "Size": "63062",
+      "Depends": "libc6 (>= 2.14)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/lz4/liblz4-1_1.9.4-1build1.1_amd64.deb"
+    },
+    {
+      "Package": "liblzo2-2",
+      "Version": "2.10-2build4",
+      "SHA256": "e0d13be155013138b8db4cfe68212b866080af661c78302c2eab0d2f9d0d454e",
+      "Size": "54148",
+      "Depends": "libc6 (>= 2.14)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/l/lzo2/liblzo2-2_2.10-2build4_amd64.deb"
+    },
+    {
+      "Package": "libbz2-1.0",
+      "Version": "1.0.8-5.1ubuntu0.1",
+      "SHA256": "36ee08b00b1ee5018b2fce02881b7d2d73c9b4e32990bde3388400d86c48126a",
+      "Size": "34562",
+      "Depends": "libc6 (>= 2.4)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/b/bzip2/libbz2-1.0_1.0.8-5.1ubuntu0.1_amd64.deb"
+    },
+    {
+      "Package": "libcrypt1",
+      "Version": "1:4.4.36-4build1",
+      "SHA256": "9474785cd6f398512bf8c305c3901dbb111569dccb6f5832002373c0a8ac5832",
+      "Size": "82302",
+      "Depends": "libc6 (>= 2.38)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libx/libxcrypt/libcrypt1_4.4.36-4build1_amd64.deb"
+    },
+    {
+      "Package": "libpcre2-8-0",
+      "Version": "10.42-4ubuntu2.1",
+      "SHA256": "110a797a57673d3ee497a141cf988199258058c57525799c63194d81822529a0",
+      "Size": "226662",
+      "Depends": "libc6 (>= 2.34)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/pcre2/libpcre2-8-0_10.42-4ubuntu2.1_amd64.deb"
+    },
+    {
+      "Package": "zlib1g",
+      "Version": "1:1.3.dfsg-3.1ubuntu2.2",
+      "SHA256": "84b9cf5752b29c9f92c27cd4c4ba9bbcc70b5ccf9b1b515421a28ae23212e273",
+      "Size": "62988",
+      "Depends": "libc6 (>= 2.14)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/z/zlib/zlib1g_1.3.dfsg-3.1ubuntu2.2_amd64.deb"
+    },
+    {
+      "Package": "libssl3t64",
+      "Version": "3.0.13-0ubuntu3.16",
+      "SHA256": "219f43b1cd836a4da550938db5fda93160d269d39a4edcf1f1ce698a470db797",
+      "Size": "1945300",
+      "Depends": "libc6 (>= 2.38)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl3t64_3.0.13-0ubuntu3.16_amd64.deb"
+    },
+    {
+      "Package": "libtinfo6",
+      "Version": "6.4+20240113-1ubuntu2.2",
+      "SHA256": "b67a6df2bdab61d273eabebd208bb6a3fb12618a390a067e1ee305a409ff03d9",
+      "Size": "108086",
+      "Depends": "libc6 (>= 2.34)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/n/ncurses/libtinfo6_6.4+20240113-1ubuntu2.2_amd64.deb"
+    },
+    {
+      "Package": "php8.3-mysql",
+      "Version": "8.3.6-0ubuntu0.24.04.11",
+      "SHA256": "70623e47f67460ba8eba92f31c7ead46db49ed03522c2d7ebe59e3e62b8e4ee4",
+      "Size": "126660",
+      "Depends": "php-common (>= 1:81~), ucf, php8.3-common (= 8.3.6-0ubuntu0.24.04.11), libc6 (>= 2.38)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/p/php8.3/php8.3-mysql_8.3.6-0ubuntu0.24.04.11_amd64.deb"
+    },
+    {
+      "Package": "libsystemd0",
+      "Version": "255.4-1ubuntu8.18",
+      "SHA256": "2da3fa28302cf007075e89cdc3aabe6973916afcd62c3884b86f67b77c73a5b4",
+      "Size": "436342",
+      "Depends": "libc6 (>= 2.38), libcap2 (>= 1:2.10), libgcrypt20 (>= 1.10.0), liblz4-1 (>= 0.0~r122), liblzma5 (>= 5.1.1alpha+20120614), libzstd1 (>= 1.5.5)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/s/systemd/libsystemd0_255.4-1ubuntu8.18_amd64.deb"
+    },
+    {
+      "Package": "libgcrypt20",
+      "Version": "1.10.3-2ubuntu0.2",
+      "SHA256": "957b9eeaa83cf6f2d5d5d76dbb8aa31d3297e6781d8a02fa08dcc897ae650a0b",
+      "Size": "536494",
+      "Depends": "libc6 (>= 2.38), libgpg-error0 (>= 1.27)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libgcrypt20/libgcrypt20_1.10.3-2ubuntu0.2_amd64.deb"
+    },
+    {
+      "Package": "libgpg-error0",
+      "Version": "1.47-3build2.1",
+      "SHA256": "93654ee8180a73a0363f25c51dc673d67cbabcbecd164187b8a2deb54d007aef",
+      "Size": "70092",
+      "Depends": "libc6 (>= 2.38)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libg/libgpg-error/libgpg-error0_1.47-3build2.1_amd64.deb"
+    },
+    {
+      "Package": "libcap2",
+      "Version": "1:2.66-5ubuntu2.4",
+      "SHA256": "23c627c77c66552a658e62852f244f4946dc543898e0ec5428d5dc6bffde2d6a",
+      "Size": "30500",
+      "Depends": "libc6 (>= 2.38)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/libc/libcap2/libcap2_2.66-5ubuntu2.4_amd64.deb"
+    },
+    {
+      "Package": "liblzma5",
+      "Version": "5.6.1+really5.4.5-1ubuntu0.3",
+      "SHA256": "d2eabd41ca77d2c2dd9d5d4ef478cccb64ffde6279c47cf4699a857d46785a52",
+      "Size": "127352",
+      "Depends": "libc6 (>= 2.34)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/x/xz-utils/liblzma5_5.6.1+really5.4.5-1ubuntu0.3_amd64.deb"
+    },
+    {
+      "Package": "mariadb-client",
+      "Version": "1:10.11.13-0ubuntu0.24.04.1",
+      "SHA256": "6b8d906dfa08616e00dce441b13c366169f2e5364bab7d80d9ff2831c04144bc",
+      "Size": "2500468",
+      "Depends": "debianutils (>= 1.6), libconfig-inifiles-perl, mariadb-client-core (>= 1:10.11.13-0ubuntu0.24.04.1), perl:any, libc6 (>= 2.38), libgcc-s1 (>= 3.0), libssl3t64 (>= 3.0.0), libstdc++6 (>= 5.2), zlib1g (>= 1:1.2.0)",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/m/mariadb/mariadb-client_10.11.13-0ubuntu0.24.04.1_amd64.deb"
+    },
+    {
+      "package": "psr/container",
+      "version": "2.0.2",
+      "reference": "c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+      "url": "https://codeload.github.com/php-fig/container/zip/c71ecc56dfe541dbd90c5360474fbc405f8d5963",
+      "sha256": "643d1a6a0e70206361572468b333b34ae8b78ae3ae7799dd332dfe76b5ea2467",
+      "license": "MIT",
+      "require": {
+        "php": ">=7.4.0"
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Container\\": "src/"
+        }
+      },
+      "scope": "validation profile; not recovered historical composer.lock"
+    },
+    {
+      "package": "psr/http-message",
+      "version": "1.1",
+      "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+      "url": "https://codeload.github.com/php-fig/http-message/zip/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+      "sha256": "8677481a92d53fe7a5b7dac895dc7401cd654dd50c2c7f1c8a9638ea6a040e43",
+      "license": "MIT",
+      "require": {
+        "php": "^7.2 || ^8.0"
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Http\\Message\\": "src/"
+        }
+      },
+      "scope": "validation profile; not recovered historical composer.lock"
+    },
+    {
+      "package": "psr/log",
+      "version": "3.0.2",
+      "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+      "url": "https://codeload.github.com/php-fig/log/zip/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+      "sha256": "f72761da57513fdbd0616ed7b0ba450d8a14fca87e4743f68a1b1552c1927412",
+      "license": "MIT",
+      "require": {
+        "php": ">=8.0.0"
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\Log\\": "src"
+        }
+      },
+      "scope": "validation profile; not recovered historical composer.lock"
+    },
+    {
+      "package": "psr/simple-cache",
+      "version": "3.0.0",
+      "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865",
+      "url": "https://codeload.github.com/php-fig/simple-cache/zip/764e0b3939f5ca87cb904f570ef9be2d78a07865",
+      "sha256": "196955c8e51b0aacbc6812af55effda5438b4c5a94260ed85f0f3cf46ab39af1",
+      "license": "MIT",
+      "require": {
+        "php": ">=8.0.0"
+      },
+      "autoload": {
+        "psr-4": {
+          "Psr\\SimpleCache\\": "src/"
+        }
+      },
+      "scope": "validation profile; not recovered historical composer.lock"
+    },
+    {
+      "package": "topthink/framework",
+      "version": "v8.1.1",
+      "reference": "d301115ea77f33745b8d6659c74740c34fe53e9b",
+      "url": "https://codeload.github.com/top-think/framework/zip/d301115ea77f33745b8d6659c74740c34fe53e9b",
+      "sha256": "5049fd32e7fa5e37a7ed7b31fbacb480b2630fa9bf6cfbdd2796313092819b2a",
+      "license": "Apache-2.0",
+      "require": {
+        "php": ">=8.0.0",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-ctype": "*",
+        "psr/log": "^1.0|^2.0|^3.0",
+        "psr/container": "^2.0",
+        "psr/simple-cache": "^1.0|^2.0|^3.0",
+        "psr/http-message": "^1.0",
+        "topthink/think-orm": "^3.0|^4.0",
+        "topthink/think-helper": "^3.1"
+      },
+      "autoload": {
+        "files": [],
+        "psr-4": {
+          "think\\": "src/think/"
+        }
+      },
+      "scope": "validation profile; not recovered historical composer.lock"
+    },
+    {
+      "package": "topthink/think-helper",
+      "version": "v3.1.12",
+      "reference": "fe277121112a8f1c872e169a733ca80bb11c4acb",
+      "url": "https://codeload.github.com/top-think/think-helper/zip/fe277121112a8f1c872e169a733ca80bb11c4acb",
+      "sha256": "73caa6ead143c758235a1bd3334078aa9b9249605df2c6fc6696304de253e181",
+      "license": "Apache-2.0",
+      "require": {
+        "php": ">=7.1.0"
+      },
+      "autoload": {
+        "psr-4": {
+          "think\\": "src"
+        },
+        "files": [
+          "src/helper.php"
+        ]
+      },
+      "scope": "validation profile; not recovered historical composer.lock"
+    },
+    {
+      "package": "topthink/think-multi-app",
+      "version": "v1.1.1",
+      "reference": "f93c604d5cfac2b613756273224ee2f88e457b88",
+      "url": "https://codeload.github.com/top-think/think-multi-app/zip/f93c604d5cfac2b613756273224ee2f88e457b88",
+      "sha256": "8544374a3fd54fd7007374d44f6ac0ed8bbfaf6b91fdd704a8f69fda0e984aad",
+      "license": "Apache-2.0",
+      "require": {
+        "php": ">=7.1.0",
+        "topthink/framework": "^6.0|^8.0"
+      },
+      "autoload": {
+        "psr-4": {
+          "think\\app\\": "src"
+        }
+      },
+      "scope": "validation profile; not recovered historical composer.lock"
+    },
+    {
+      "package": "topthink/think-orm",
+      "version": "v3.0.33",
+      "reference": "6e0ea679f7448ff9c8906606462505597681e22e",
+      "url": "https://codeload.github.com/top-think/think-orm/zip/6e0ea679f7448ff9c8906606462505597681e22e",
+      "sha256": "c2373bd8c3da131ef3354bdf24f26bb76adec09e44bcdb5f6f418d64baea72ae",
+      "license": "Apache-2.0",
+      "require": {
+        "php": ">=8.0.0",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "psr/simple-cache": ">=1.0",
+        "psr/log": ">=1.0",
+        "topthink/think-helper": "^3.1"
+      },
+      "autoload": {
+        "psr-4": {
+          "think\\": "src"
+        },
+        "files": [
+          "stubs/load_stubs.php"
+        ]
+      },
+      "scope": "validation profile; not recovered historical composer.lock"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "03-public-mariadb",
+      "sha256": "02e7cdd53c8e9baa359dbb024be3fedd5b56ebc51a1c9abe2175669a64de40c8",
+      "bytes": 18724289
+    },
+    {
+      "name": "03b-public-mariadb-closure",
+      "sha256": "d6085e1905530a4b5fc5069728a09c7d1656beb1c9a818dbf523cfc64fc7fe60",
+      "bytes": 2277928
+    },
+    {
+      "name": "03c-public-mariadb-dump",
+      "sha256": "eb8c66f3a8943bc2d43108e4866225e451c3f86d16085ea4ec97b4e14c992520",
+      "bytes": 1172680
+    },
+    {
+      "name": "04b-public-framework-complete",
+      "sha256": "c1110456aea78d6f81c3c1c45a6921a5f7b86315f33e036b8a5c847363c52755",
+      "bytes": 343241
+    }
+  ],
+  "controlled_dependencies": {
+    "excluded_ignored_files": 146,
+    "controlled_vendor": 119,
+    "uncopied_source": 8,
+    "full_training": "BLOCKED",
+    "portal_editable_source": "BLOCKED",
+    "full_php_plugins_and_historical_lock": "BLOCKED"
+  },
+  "runtime_archives": {
+    "/previous/php-runtime.tar.gz": {
+      "bytes": 44676587,
+      "sha256": "6e143cbfd8157567c3a2da8af4b4e3b73625e58882a8ae4b8c1133f3f6eb0c95"
+    },
+    "/previous/php-runtime-addons.tar.gz": {
+      "bytes": 1072060,
+      "sha256": "19fba931c5a5004f9260f8e96e9d1ae56933471a3d42807b519bc49d6ec2b713"
+    },
+    "/harness/mariadb-runtime.tar.gz": {
+      "bytes": 18724289,
+      "sha256": "02e7cdd53c8e9baa359dbb024be3fedd5b56ebc51a1c9abe2175669a64de40c8"
+    },
+    "/harness/mariadb-runtime-closure.tar.gz": {
+      "bytes": 2277928,
+      "sha256": "d6085e1905530a4b5fc5069728a09c7d1656beb1c9a818dbf523cfc64fc7fe60"
+    },
+    "/harness/mariadb-dump-runtime.tar.gz": {
+      "bytes": 1172680,
+      "sha256": "eb8c66f3a8943bc2d43108e4866225e451c3f86d16085ea4ec97b4e14c992520"
+    },
+    "/harness/framework-runtime-complete.tar.gz": {
+      "bytes": 343241,
+      "sha256": "c1110456aea78d6f81c3c1c45a6921a5f7b86315f33e036b8a5c847363c52755"
+    }
+  }
+}

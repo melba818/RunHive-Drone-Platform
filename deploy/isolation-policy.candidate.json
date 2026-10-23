@@ -1,0 +1,17 @@
+{
+  "status": "CANDIDATE_NONPRODUCTION_ONLY",
+  "network": "none; service processes share only an owned loopback namespace",
+  "production_mounts": [],
+  "published_ports": [],
+  "gpu": false,
+  "read_only_root": true,
+  "capabilities_drop": ["ALL"],
+  "no_new_privileges": true,
+  "aggregate_budget": {"cpu_cores": 2, "memory_gib": 6, "pids": 256, "swap_bytes": 0, "physical_io_bytes_per_second": 524288},
+  "workers": [
+    {"synthetic_account": 101, "uid": 1011, "gid": 1011, "private_mount": "own-private-root-only", "mode": "0700", "port": 20101},
+    {"synthetic_account": 202, "uid": 1012, "gid": 1012, "private_mount": "own-private-root-only", "mode": "0700", "port": 20202}
+  ],
+  "shared_models": {"default": "read-only", "writes": "BLOCKED_PENDING_BUSINESS_POLICY", "admin_override": "NOT_GRANTED"},
+  "session_revocation": {"current_ttl_seconds": 28800, "disable_existing_sessions": "NOT_REVOKED_BY_CURRENT_PROTOCOL", "proposed_options": ["accept current expiry", "bounded online status cache with approved outage policy", "versioned sessions with approved migration"]}
+}

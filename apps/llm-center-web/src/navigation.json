@@ -1,0 +1,22 @@
+{
+  "titles": [
+    "数据看板",
+    "飞行空间",
+    "设备管理",
+    "飞行记录",
+    "应用中心",
+    "大模型中心",
+    "Agent中心",
+    "模型管理"
+  ],
+  "images": [
+    "/img/menu/menu1.png",
+    "/img/menu/menu2.png",
+    "/img/menu/menu4.png",
+    "/img/menu/menu5.png",
+    "/img/menu/menu6.png",
+    "/img/menu/llm-center.svg",
+    "/img/menu/agent-center.svg",
+    "/img/menu/menu8.png"
+  ]
+}

@@ -1,0 +1,185 @@
+/**
+ * session-grouping.ts unit tests for the sidebar's display windows: the PAGE of groups the
+ * list shows at a time, the count of conversations one group still hides behind its
+ * "Show N more chats" row, and the window a single folder reveals through that same row.
+ *
+ * The invariants worth pinning: a page number always resolves to a page that exists
+ * (groups come and go under a stored page), search-free slicing never drops or repeats a
+ * group across pages, the hidden count is computed from ONE group's own numbers — with the
+ * loaded rows overriding a server total that drifted above reality, so the reveal row can
+ * never promise conversations that are not there — and a list (a group's active rows, or
+ * one of its folders) reveals one page per click whatever a fetch returned, folding back
+ * to exactly that first page and never to nothing.
+ */
+import { describe, expect, it } from "vitest";
+import {
+  SIDEBAR_GROUP_PAGE_SIZE,
+  SIDEBAR_PAGE_SIZE,
+  clampGroupPage,
+  groupPageCount,
+  groupPageOf,
+  groupPageSlice,
+  hiddenRowCount,
+  revealPlan,
+} from "../src/lib/session-grouping";
+
+const seq = (n: number) => Array.from({ length: n }, (_, i) => i);
+
+describe("groupPageCount", () => {
+  it("gives an empty list one page, so page 1 always exists", () => {
+    expect(groupPageCount(0)).toBe(1);
+  });
+
+  it("rounds up a partial last page", () => {
+    expect(groupPageCount(1)).toBe(1);
+    expect(groupPageCount(SIDEBAR_GROUP_PAGE_SIZE)).toBe(1);
+    expect(groupPageCount(SIDEBAR_GROUP_PAGE_SIZE + 1)).toBe(2);
+    expect(groupPageCount(SIDEBAR_GROUP_PAGE_SIZE * 3)).toBe(3);
+  });
+});
+
+describe("clampGroupPage", () => {
+  it("keeps a page that exists", () => {
+    expect(clampGroupPage(2, 25)).toBe(2);
+  });
+
+  it("lands on the last real page when the groups shrank under a stored page", () => {
+    expect(clampGroupPage(7, 25)).toBe(2);
+    expect(clampGroupPage(7, 0)).toBe(0);
+  });
+
+  it("floors at the first page", () => {
+    expect(clampGroupPage(-3, 25)).toBe(0);
+  });
+});
+
+describe("groupPageSlice", () => {
+  it("cuts consecutive, non-overlapping pages that cover the whole sequence", () => {
+    const groups = seq(23);
+    const pages = seq(groupPageCount(groups.length)).map((p) => groupPageSlice(groups, p));
+    expect(pages.map((page) => page.length)).toEqual([10, 10, 3]);
+    expect(pages.flat()).toEqual(groups);
+  });
+
+  it("clamps an out-of-range page to the last one rather than rendering nothing", () => {
+    expect(groupPageSlice(seq(12), 9)).toEqual([10, 11]);
+  });
+
+  it("holds the order it was given (the caller has already sorted)", () => {
+    expect(groupPageSlice(["b", "a", "c"], 0)).toEqual(["b", "a", "c"]);
+  });
+});
+
+describe("groupPageOf", () => {
+  it("maps a group's index to the page it renders on", () => {
+    expect(groupPageOf(0)).toBe(0);
+    expect(groupPageOf(SIDEBAR_GROUP_PAGE_SIZE - 1)).toBe(0);
+    expect(groupPageOf(SIDEBAR_GROUP_PAGE_SIZE)).toBe(1);
+    expect(groupPageOf(SIDEBAR_GROUP_PAGE_SIZE * 2 + 4)).toBe(2);
+  });
+});
+
+describe("hiddenRowCount", () => {
+  it("counts the loaded rows the display cap hides", () => {
+    expect(hiddenRowCount({ shown: 10, loaded: 14, total: 14, fullyLoaded: true })).toBe(4);
+  });
+
+  it("counts unfetched rows too while the group's share is not fully loaded", () => {
+    expect(hiddenRowCount({ shown: 10, loaded: 10, total: 42, fullyLoaded: false })).toBe(32);
+  });
+
+  it("drops a stale total once every Agent of the group is fetched out", () => {
+    // The counts refresh only on reload: a total left above reality would otherwise keep a
+    // reveal row on screen with nothing behind it.
+    expect(hiddenRowCount({ shown: 12, loaded: 12, total: 42, fullyLoaded: true })).toBe(0);
+  });
+
+  it("trusts loaded rows over a total that lags behind them", () => {
+    expect(hiddenRowCount({ shown: 10, loaded: 13, total: 11, fullyLoaded: false })).toBe(3);
+  });
+
+  it("never goes negative when everything is on screen", () => {
+    expect(hiddenRowCount({ shown: 8, loaded: 8, total: 8, fullyLoaded: true })).toBe(0);
+    expect(hiddenRowCount({ shown: 20, loaded: 8, total: 3, fullyLoaded: false })).toBe(0);
+  });
+});
+
+describe("revealPlan", () => {
+  it("shows one page of a folder whose share is barely fetched, with no way back yet", () => {
+    // The reported bug: a fetch that returned 13 rows revealed all 13 at once and then had
+    // nothing to fold them back with.
+    expect(revealPlan({ cap: 10, loaded: 10, total: 28, fullyLoaded: false })).toEqual({
+      shown: 10,
+      hidden: 18,
+      canCollapse: false,
+    });
+  });
+
+  it("reveals a page at a time, keeping the rows a fetch over-returned under the cap", () => {
+    expect(revealPlan({ cap: 20, loaded: 23, total: 28, fullyLoaded: false })).toEqual({
+      shown: 20,
+      hidden: 8,
+      canCollapse: true,
+    });
+  });
+
+  it("drops the reveal row and keeps the collapse once the whole share is on screen", () => {
+    expect(revealPlan({ cap: 30, loaded: 28, total: 28, fullyLoaded: true })).toEqual({
+      shown: 28,
+      hidden: 0,
+      canCollapse: true,
+    });
+  });
+
+  it("shows nothing it does not hold: the cap never promises unfetched rows", () => {
+    expect(revealPlan({ cap: 20, loaded: 3, total: 3, fullyLoaded: true })).toEqual({
+      shown: 3,
+      hidden: 0,
+      canCollapse: false,
+    });
+  });
+
+  it("offers no collapse on a folder that fits in its first page", () => {
+    const plan = revealPlan({
+      cap: SIDEBAR_PAGE_SIZE,
+      loaded: SIDEBAR_PAGE_SIZE,
+      total: SIDEBAR_PAGE_SIZE,
+      fullyLoaded: true,
+    });
+    expect(plan).toEqual({ shown: SIDEBAR_PAGE_SIZE, hidden: 0, canCollapse: false });
+  });
+
+  it("reveals the eleventh row and stops, rather than everything past the page", () => {
+    // A list of exactly 11: ten show, the reveal row names the single row it hides (the
+    // label's singular branch), and one click lands on 11 with nothing more to reveal.
+    expect(revealPlan({ cap: 10, loaded: 10, total: 11, fullyLoaded: false })).toEqual({
+      shown: 10,
+      hidden: 1,
+      canCollapse: false,
+    });
+    expect(revealPlan({ cap: 20, loaded: 11, total: 11, fullyLoaded: true })).toEqual({
+      shown: 11,
+      hidden: 0,
+      canCollapse: true,
+    });
+  });
+
+  it("folds back to the first page and not to nothing", () => {
+    // What "show less" leaves behind: the cap returns to one page while every fetched row
+    // stays in memory, so the window is the first ten again — with the reveal row back,
+    // naming the rest — rather than an emptied list.
+    expect(
+      revealPlan({ cap: SIDEBAR_PAGE_SIZE, loaded: 28, total: 28, fullyLoaded: true }),
+    ).toEqual({ shown: SIDEBAR_PAGE_SIZE, hidden: 18, canCollapse: false });
+  });
+
+  it("drops a stale total once every contributing Agent is fetched out", () => {
+    // Same clause hiddenRowCount applies: counts refresh only on reload, and a folder must
+    // not keep a reveal row standing over rows that no longer exist.
+    expect(revealPlan({ cap: 10, loaded: 10, total: 42, fullyLoaded: true })).toEqual({
+      shown: 10,
+      hidden: 0,
+      canCollapse: false,
+    });
+  });
+});

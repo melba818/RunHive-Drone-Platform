@@ -1,0 +1,2 @@
+FROM runhive-center-gateway:ui-v3-base-339fe9c9
+COPY --chown=1011:1011 app.py bootstrap.html serve.py /app/

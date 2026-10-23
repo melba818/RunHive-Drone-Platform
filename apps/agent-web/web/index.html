@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- interactive-widget: the soft keyboard shrinks the LAYOUT viewport, so the shell's
+         `height: 100%` reflows above it instead of the page keeping its full height and
+         letting the keyboard cover the bottom (the terminal's last rows, a composer).
+         Chrome-only; Safari is covered by useVisualViewportHeight. -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    
+    <title>Runhive · Agent中心</title>
+    <!-- Pre-paint theme: sets html.dark, data-theme, data-accent and the root font size from the
+         stored preferences before the first frame, so a dark page, or one in any theme but the
+         stylesheet's fallback, never flashes that fallback and the first frame never renders at
+         16px and reflows. Must equal BOOT_SCRIPT in @prismshadow/penguin-ui/boot byte for byte
+         (a test compares them). -->
+    <!-- prettier-ignore -->
+    <script>document.documentElement.style.fontSize="14px";document.documentElement.classList.remove("dark");</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/runhive-entry.ts"></script>
+  </body>
+</html>
