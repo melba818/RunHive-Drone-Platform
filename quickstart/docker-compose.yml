@@ -10,6 +10,12 @@ services:
     volumes:
       - db-data:/var/lib/mysql
       - ./db-init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+      start_period: 10s
   redis:
     image: redis:7-alpine
     command:
@@ -23,8 +29,10 @@ services:
       context: ..
       dockerfile: quickstart/php/Dockerfile
     depends_on:
-      - db
-      - redis
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
     environment:
       WEB_DOCUMENT_ROOT: /srv/runhive/backend/public
       PHP_DATE_TIMEZONE: Asia/Shanghai
