@@ -33,6 +33,8 @@ services:
         condition: service_healthy
       redis:
         condition: service_started
+      init:
+        condition: service_completed_successfully
     environment:
       WEB_DOCUMENT_ROOT: /srv/runhive/backend/public
       PHP_DATE_TIMEZONE: Asia/Shanghai
@@ -42,6 +44,12 @@ services:
       RUNOS_LAN_PORT: 14000
     volumes:
       - ./runtime:/srv/runhive/runtime
+  init:
+    image: alpine:3.20
+    volumes:
+      - ./runtime:/runtime
+      - ./init-runtime-secrets.sh:/init-runtime-secrets.sh:ro
+    entrypoint: ["/bin/sh", "/init-runtime-secrets.sh"]
   web:
     image: nginx:1.29.4
     depends_on:

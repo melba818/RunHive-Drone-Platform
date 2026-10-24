@@ -34,9 +34,9 @@ Stop / 停止：`docker compose down`（add `-v` to also drop the demo data / �
 
 ## Demo values — change before any real use / 演示值说明
 
-`backend.env`, the database credentials in `docker-compose.yml`, and the files in `runtime/` contain throwaway demo-only values so the stack starts with zero configuration. **Never reuse them outside this local demo** — generate your own secrets for a real deployment.
+`backend.env`, the database credentials in `docker-compose.yml`, contain throwaway demo-only values so the stack starts with zero configuration. The inter-service secrets in `runtime/` are generated fresh on first start by the `init` service (and `runtime/` is git-ignored, so no secret is ever committed). **Never reuse them outside this local demo** — generate your own secrets for a real deployment.
 
-`backend.env`、`docker-compose.yml` 中的数据库口令与 `runtime/` 内的文件均为一次性的演示值，只为零配置启动。**切勿用于真实部署**，正式环境请自行生成。
+`backend.env`、`docker-compose.yml` 中的数据库口令均为一次性的演示值，只为零配置启动；`runtime/` 内的服务间密钥由 `init` 服务在首次启动时本地生成（且 `runtime/` 已被 git 忽略，不会入库）。**切勿用于真实部署**，正式环境请自行生成。
 
 ---
 
