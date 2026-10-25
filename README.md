@@ -9,8 +9,8 @@ Self-hosted · One command to run · MIT licensed
 [English](README.md) · [简体中文](README.zh-CN.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Release](https://img.shields.io/badge/release-v1.1.0-blue.svg)](https://github.com/melba818/runhive/releases)
-[![Stars](https://img.shields.io/github/stars/melba818/runhive?style=social)](https://github.com/melba818/runhive/stargazers)
+[![Release](https://img.shields.io/badge/release-v1.1.0-blue.svg)](https://github.com/melba818/RunHive-Drone-Platform/releases)
+[![Stars](https://img.shields.io/github/stars/melba818/RunHive-Drone-Platform?style=social)](https://github.com/melba818/RunHive-Drone-Platform/stargazers)
 
 </div>
 
@@ -71,7 +71,7 @@ flowchart LR
 **Just want to try it?** Clone this repo and run one command for the portal demo:
 
 ```bash
-git clone https://github.com/melba818/runhive.git
+git clone https://github.com/melba818/RunHive-Drone-Platform.git
 cd runhive/quickstart && docker compose up -d
 ```
 

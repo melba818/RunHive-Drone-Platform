@@ -7,7 +7,7 @@ One command brings up the RunHive portal — the same entry point as a productio
 ## Run / 启动
 
 ```bash
-git clone https://github.com/melba818/runhive.git
+git clone https://github.com/melba818/RunHive-Drone-Platform.git
 cd runhive/quickstart
 docker compose up -d
 ```
@@ -47,7 +47,7 @@ Everything the demo video shows — the portal plus **RunOS** (data engine), the
 演示视频里的完整形态 —— 门户 + **RunOS**（数据引擎）+ **大模型中心**（微调工作区）+ **Agent 平台**（Copilot 的工具层），一套部署全部拉起：
 
 ```bash
-git clone https://github.com/melba818/runhive.git
+git clone https://github.com/melba818/RunHive-Drone-Platform.git
 cd runhive/quickstart
 ./start-full.sh
 ```
