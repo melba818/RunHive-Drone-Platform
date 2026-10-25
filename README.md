@@ -2,11 +2,11 @@
 
 # RunHive
 
-**The AI-native drone fleet platform — one portal for flight operations, data annotation, model training, and LLM fine-tuning, driven by a Copilot agent that does the work with you.**
+**为无人机集群运营而生的 AI 原生平台 —— 一个内置的 Agent 助手，陪你标注数据、规划航线、微调大模型，全部在一个控制台里完成。**
 
-Self-hosted · One command to run · MIT licensed
+可自托管 · 一条命令跑起来 · MIT 开源协议
 
-[English](README.md) · [简体中文](README.zh-CN.md)
+[English](README.en.md) · [简体中文](README.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Release](https://img.shields.io/badge/release-v1.1.0-blue.svg)](https://github.com/melba818/RunHive-Drone-Platform/releases)
@@ -14,129 +14,129 @@ Self-hosted · One command to run · MIT licensed
 
 </div>
 
-RunHive is an open-source platform for operating a drone fleet end to end: plan missions, manage aircraft and docks, fly tasks, turn flight imagery into labeled datasets, train models, and fine-tune large models — all from one portal. A built-in **Copilot agent** sits in every workspace and operates the platform through conversation, so multi-step work becomes a sentence followed by confirmations.
+RunHive 是一个面向无人机集群全流程运营的开源平台：规划任务、管理飞机与机场、执行飞行、把飞行影像变成标注数据集、训练模型、微调大模型 —— 全部在一个门户里完成。内置的 **Copilot 智能助手**坐在每一个工作台里，用对话直接操作平台，多步骤工作变成一句话加几次确认。
 
-## 🎬 Watch it in action
+## 🎬 先看演示
 
-Click the poster to play the 2:40 product tour — a real session where the built-in **Copilot agent** drives the whole workflow by conversation: AI-assisted annotation → agent route planning → LLM fine-tuning.
+点击下方海报播放 2 分 40 秒的产品演示 —— 这是一段真实操作录像：内置的 **Copilot 智能助手**全程用对话驱动完整工作流：AI 辅助标注 → Agent 航线规划 → 大模型微调。
 
-[![RunHive product tour](docs/media/shot-dashboard.jpg)](docs/media/runhive-demo.mp4)
+[![RunHive 产品演示](docs/media/shot-dashboard.jpg)](docs/media/runhive-demo.mp4)
 
-▶ In-repo video: [docs/media/runhive-demo.mp4](docs/media/runhive-demo.mp4) · Full-quality original: [Google Drive](https://drive.google.com/file/d/1WXHunPKn8j_smbo4kIC76s3jNx_MgLMx/view?usp=drive_link)
+▶ 仓库内视频：[docs/media/runhive-demo.mp4](docs/media/runhive-demo.mp4) · 高清原版：[Google Drive](https://drive.google.com/file/d/1WXHunPKn8j_smbo4kIC76s3jNx_MgLMx/view?usp=drive_link)
 
-## ✨ Key capabilities
+## ✨ 核心能力
 
-- **🤖 A Copilot agent that actually operates the platform** — it doesn't just chat. It calls platform tools, walks you through multi-step tasks with guided cards, and keeps a task ledger while you confirm each step. Ask it to *"prepare auto-annotation"*, *"create a patrol route for this water area"*, or *"start a fine-tuning run"*, and it drives RunOS, the route planner, and the LLM center for you.
-- **🗺️ Agent route planning** — describe the mission; the agent generates the route. In the demo, one sentence produces a **67-waypoint, 1.7 km survey route** over a lake — with per-waypoint altitude, speed, gimbal pitch and actions (e.g. start recording), a height profile, 3D preview, one-click save to the route library, and KMZ import/export for DJI workflows.
-- **🏷️ RunOS — the data engine** — datasets, AI-assisted batch annotation (vision-language models pre-label, humans review), quality control, train/val splits, YOLO training & inference, model management, and a visual object-tracking module. Flight imagery goes in; deployable models come out.
-- **🧠 LLM center — fine-tuning, guided end to end** — pick a base model and a dataset (or import your own in ShareGPT / Alpaca / plain-text formats), and launch fine-tuning from a visual workspace — no YAML spelunking required. The Copilot can drive the same flow conversationally, step by step. Bring your own provider key; the repository contains no real keys.
-- **🚁 Fleet & flight operations** — projects, aircraft and dock management, flight tasks and records with OSD tracks, a media library, health (HMS) alerts, and DJI ecosystem integration — everything wrapped in one portal with role-based access control.
-- **🧑‍💻 Agent platform** — a multi-agent workbench (chat, tools, MCP bridges, machine access) built on [PenguinHarness](https://github.com/Prism-Shadow/penguin-harness); see `NOTICE`.
+- **🤖 一个真正能“干活”的 Copilot 智能助手** —— 它不只是聊天。它会调用平台工具，用分步引导卡片带你完成多步骤任务，全程留痕、每一步由你确认。对它说一句“帮我准备自动标注”“给这片水域创建一条巡检航线”“我要进行大模型微调”，它就会替你驱动 RunOS、航线规划器和大模型中心。
+- **🗺️ Agent 航线规划** —— 说清任务，航线自动生成。演示中一句话就生成了一条覆盖湖面的 **67 个航点、1.7 公里**测绘航线 —— 每个航点可设高度、速度、云台俯仰与动作（如开始录像），带高度曲线剖面与三维预览，一键保存进航线库，并支持 KMZ 导入/导出，无缝衔接 DJI 工作流。
+- **🏷️ RunOS —— 数据引擎** —— 数据集管理、AI 辅助批量标注（视觉语言模型先标、人工复核）、质检、训练/验证集划分、YOLO 训练与推理、模型管理、可视化目标跟踪模块。飞行影像进去，可部署的模型出来。
+- **🧠 大模型中心 —— 微调全程引导** —— 选一个基座模型和数据集（或用 ShareGPT / Alpaca / 纯文本格式导入自己的数据），在可视化工作台里发起微调，不用翻 YAML。Copilot 也可以用对话一步步带你走完同一流程。模型服务商密钥自备，仓库里不含任何真实密钥。
+- **🚁 集群与飞行运营** —— 项目、飞机与机场管理、飞行任务与带 OSD 轨迹的飞行记录、媒体库、健康（HMS）告警、DJI 生态集成 —— 全部包在一个带角色权限的门户里。
+- **🧑‍💻 Agent 平台** —— 多智能体工作台（对话、工具、MCP 桥接、机器接入），基于 [PenguinHarness](https://github.com/Prism-Shadow/penguin-harness) 构建，见 `NOTICE`。
 
-## 🧩 Architecture
+## 🧩 架构
 
 ```mermaid
 flowchart LR
-    U[Browser] --> P[Portal]
-    P --> B[PHP business backend]
-    P --> R[RunOS\nannotation & training]
-    P --> L[LLM center\ngateway & control]
-    P --> A[Agent platform]
+    U[浏览器] --> P[门户]
+    P --> B[PHP 业务后端]
+    P --> R[RunOS\n标注与训练]
+    P --> L[大模型中心\n网关与控制]
+    P --> A[Agent 平台]
     B --> D[(MariaDB)]
     B --> C[(Redis)]
-    L --> W[Training workspaces\nper account]
+    L --> W[按账号拉起的\n训练工作区]
 ```
 
-- **Portal & PHP business backend** (`services/php`) — accounts, projects, flight-task and business APIs that everything else integrates with.
-- **RunOS** (`apps/runos-web`, `services/runos-api`) — dataset management, annotation workflows, quality review, model training/inference, visual tracking.
-- **Agent platform** (`apps/agent-web`, `services/agent-platform`) — multi-agent workbench (chat, tools, MCP bridges, machine access).
-- **LLM center** (`services/llm-center`, `apps/llm-center-web`) — gateway, privileged runtime controller and PHP integration brokering LLM instances, fine-tuning jobs and inference for the platform.
-- **Assistant & workbench shells** (`apps/assistant-web`, `apps/workbench-web`).
+- **门户与 PHP 业务后端**（`services/php`）—— 账号、项目、飞行任务与业务接口，其他模块都以此为集成点。
+- **RunOS**（`apps/runos-web`、`services/runos-api`）—— 数据集管理、标注流程、质检、模型训练/推理、可视化跟踪。
+- **Agent 平台**（`apps/agent-web`、`services/agent-platform`）—— 多智能体工作台（对话、工具、MCP 桥接、机器接入）。
+- **大模型中心**（`services/llm-center`、`apps/llm-center-web`）—— 网关、特权运行时控制器与 PHP 集成，为平台拉起大模型实例、微调任务与推理。
+- **助手与工作台外壳**（`apps/assistant-web`、`apps/workbench-web`）。
 
-## 📸 Screenshots
+## 📸 界面一览
 
 | | |
 |---|---|
-| ![Asset overview with Copilot](docs/media/shot-dashboard.jpg) | ![Agent route planning — 67 waypoints generated from one sentence](docs/media/shot-route-planning.jpg) |
-| **Asset overview** — fleet, routes and data results on a live map, Copilot on the right | **Agent route planning** — describe the mission, get a survey route |
-| ![Route editor](docs/media/shot-route-editor.jpg) | ![Copilot-guided LLM fine-tuning](docs/media/shot-finetune.jpg) |
-| **Route editor** — per-waypoint altitude / speed / gimbal / actions, height profile | **LLM fine-tuning** — "I want to fine-tune a model", the agent runs the wizard |
-| ![AI-assisted annotation in RunOS](docs/media/shot-annotation.jpg) | ![LLM center fine-tuning workspace](docs/media/shot-llm-center.jpg) |
-| **AI annotation** — VLM batch pre-labeling with human review in RunOS | **LLM center** — dataset import and training workspaces |
-| ![RunOS datasets](docs/media/shot-runos.jpg) | ![Login](docs/media/shot-login.jpg) |
-| **RunOS datasets** — browse, annotate, train | **One portal** for the whole fleet |
+| ![资产总览与 Copilot](docs/media/shot-dashboard.jpg) | ![Agent 航线规划 —— 一句话生成 67 个航点](docs/media/shot-route-planning.jpg) |
+| **资产总览** —— 机队、航线与数据成果都在实时地图上，右侧是 Copilot | **Agent 航线规划** —— 说清任务，航线自动生成 |
+| ![航线编辑器](docs/media/shot-route-editor.jpg) | ![Copilot 引导的大模型微调](docs/media/shot-finetune.jpg) |
+| **航线编辑器** —— 每个航点的高度 / 速度 / 云台 / 动作，高度曲线 | **大模型微调** —— “我要微调一个模型”，助手带你走完向导 |
+| ![RunOS 中的 AI 辅助标注](docs/media/shot-annotation.jpg) | ![大模型中心微调工作区](docs/media/shot-llm-center.jpg) |
+| **AI 标注** —— 视觉语言模型批量预标注、人工复核 | **大模型中心** —— 数据集导入与训练工作区 |
+| ![RunOS 数据集](docs/media/shot-runos.jpg) | ![登录页](docs/media/shot-login.jpg) |
+| **RunOS 数据集** —— 浏览、标注、训练 | **一个门户**，管整个机队 |
 
-## 🚀 Quick start
+## 🚀 快速开始
 
-**Just want to try it?** Clone this repo and run one command for the portal demo:
+**只想先试试？** 克隆仓库，一条命令跑起门户演示：
 
 ```bash
 git clone https://github.com/melba818/RunHive-Drone-Platform.git
 cd runhive/quickstart && docker compose up -d
 ```
 
-Then open <http://localhost:1819/> and log in with `admin` / `runhive-demo`. The quickstart boots the full portal experience against a sanitized demo database, no configuration needed.
+然后打开 <http://localhost:1819/>，用 `admin` / `runhive-demo` 登录。演示基于已脱敏的演示数据库，零配置即开即用。
 
-**Want the complete platform from the demo video — RunOS, the LLM center and the Agent platform included?** Run this in the same `quickstart/` directory instead:
+**想要演示视频里的完整形态 —— RunOS、大模型中心、Agent 平台全套？** 在同一个 `quickstart/` 目录里改跑：
 
 ```bash
 ./start-full.sh
 ```
 
-Details, ports and options: [quickstart/README.md](quickstart/README.md).
+端口与细节见：[quickstart/README.md](quickstart/README.md)。
 
-**Building from source (development):**
+**从源码构建（开发用）：**
 
-1. Clone this repository.
-2. Copy the environment templates from `deploy/env/` and each module's example env file; fill in values for your environment.
-3. Install dependencies per module (Composer for the PHP backend, pnpm/npm for the web apps, pip for the Python services).
-4. Follow the per-module README and `docs/MODULES.md` for build and run commands.
+1. 克隆本仓库。
+2. 从 `deploy/env/` 与各模块的示例 env 文件复制环境模板，按自己的环境填值。
+3. 按模块安装依赖（PHP 后端用 Composer、前端用 pnpm/npm、Python 服务用 pip）。
+4. 按各模块 README 与 `docs/MODULES.md` 里的构建与运行命令操作。
 
-## 🗂️ Project structure
+## 🗂️ 项目结构
 
 ```
 runhive/
-├── apps/            # Web frontends: portal shells, RunOS, LLM center, agent workbench
-├── services/        # Backends: PHP business backend, RunOS API, LLM center, agent platform
-├── quickstart/      # One-command demo: base portal, plus the full platform (start-full.sh)
-├── deploy/          # Environment templates and deployment files
-├── docs/            # Module guide, source-gap notes, demo media
-├── NOTICE           # Third-party attribution
+├── apps/            # 前端：门户外壳、RunOS、大模型中心、Agent 工作台
+├── services/        # 后端：PHP 业务后端、RunOS API、大模型中心、Agent 平台
+├── quickstart/      # 一键演示：基础门户，另有完整版（start-full.sh）
+├── deploy/          # 环境模板与部署文件
+├── docs/            # 模块指南、源码缺口说明、演示媒体
+├── NOTICE           # 第三方代码归属
 └── LICENSE          # MIT
 ```
 
-## ❓ FAQ
+## ❓ 常见问题
 
-**Do I need a GPU?**
-Not for the demo: the portal, RunOS browsing/annotation and the agent workbench run on CPU. Real model training inside the LLM-center workspaces needs a GPU and model weights, which are outside the one-command demo — bring your own.
+**需要 GPU 吗？**
+演示不需要：门户、RunOS 浏览/标注、Agent 工作台都能跑在 CPU 上。大模型中心工作区里的真实训练需要 GPU 与模型权重，不在一键演示范围内，需自备。
 
-**Where do I put my model provider key?**
-In `quickstart/.env` (see `.env.example`). AI features call the provider at runtime with your key; without it the platform still runs, but AI calls report that no model is configured. The repository itself contains no real keys.
+**模型服务商密钥填在哪？**
+填 `quickstart/.env`（见 `.env.example`）。AI 功能运行时用你的密钥调用服务商；不填也能正常启动，只是 AI 调用会提示未配置模型。仓库本身不含任何真实密钥。
 
-**Are there real secrets in this repo?**
-No. Inter-service secrets are generated fresh on first start into git-ignored directories, and the demo login (`admin` / `runhive-demo`) is public by design with no real data behind it.
+**仓库里有真实密钥吗？**
+没有。服务间密钥在首次启动时本地生成到 git 忽略的目录里，演示账号（`admin` / `runhive-demo`）是公开设计的演示账号，背后没有任何真实数据。
 
-**What is not included?**
-The portal's editable frontend source is not in this repository — only its built distribution is shipped. This is documented honestly in [docs/SOURCE-GAPS.md](docs/SOURCE-GAPS.md), along with the other known gaps.
+**有哪些内容不在里面？**
+门户的可编辑前端源码不在本仓库 —— 只随包发布了构建产物。这一点已如实写在 [docs/SOURCE-GAPS.md](docs/SOURCE-GAPS.md) 里，其他已知缺口也在同一文档中。
 
-**Can I run only the portal, without RunOS and the LLM center?**
-Yes — that is exactly what the base quickstart (`docker compose up -d`) does. Add the full platform later with `./start-full.sh`.
+**可以只跑门户，不跑 RunOS 和大模型中心吗？**
+可以 —— 基础版一键演示（`docker compose up -d`）就是只跑门户。之后随时可以用 `./start-full.sh` 加上完整平台。
 
-## 📚 Documentation
+## 📚 文档
 
-- [quickstart/README.md](quickstart/README.md) — demo setup, full-platform setup, ports, troubleshooting
-- [docs/MODULES.md](docs/MODULES.md) — per-module guide
-- [docs/SOURCE-GAPS.md](docs/SOURCE-GAPS.md) — known gaps and what is not included
-- [NOTICE](NOTICE) — third-party attribution
-- [CONTRIBUTING.md](CONTRIBUTING.md) — how to contribute
-- [SECURITY.md](SECURITY.md) — how to report security issues
+- [quickstart/README.md](quickstart/README.md) —— 演示搭建、完整版搭建、端口、排障
+- [docs/MODULES.md](docs/MODULES.md) —— 各模块指南
+- [docs/SOURCE-GAPS.md](docs/SOURCE-GAPS.md) —— 已知缺口与未包含内容
+- [NOTICE](NOTICE) —— 第三方代码归属
+- [CONTRIBUTING.md](CONTRIBUTING.md) —— 如何参与贡献
+- [SECURITY.md](SECURITY.md) —— 安全问题上报方式
 
-## 📄 License & third-party code
+## 📄 许可证与第三方代码
 
-RunHive's own code is released under the **MIT License** — see [LICENSE](LICENSE).
+RunHive 自有代码以 **MIT 协议**发布 —— 见 [LICENSE](LICENSE)。
 
-This repository also contains or integrates third-party components under their own licenses (including Apache-2.0 components, GPL-3.0-lineage vendored tracking code, and OFL-1.1 fonts). See [NOTICE](NOTICE) for the full attribution list before redistributing.
+本仓库还包含或集成了第三方组件，遵循各自的协议（包括 Apache-2.0 组件、GPL-3.0 血统的跟踪代码、OFL-1.1 字体）。再发布前请先看 [NOTICE](NOTICE) 里的完整归属清单。
 
-## 🤝 Contributing · Security
+## 🤝 参与贡献 · 安全
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Security reports: see [SECURITY.md](SECURITY.md).
+见 [CONTRIBUTING.md](CONTRIBUTING.md)。安全问题上报：见 [SECURITY.md](SECURITY.md)。
